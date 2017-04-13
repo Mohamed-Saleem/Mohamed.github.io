@@ -1,0 +1,86 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="../compiled/flipclock.css">
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+		<script src="../compiled/flipclock.js"></script>		
+	</head>
+	<body>
+   
+    <form>
+        <h1>Please enter data</h1>
+        <input id="hours1" type="text" placeholder="hours" />
+        <input id="minutes1" type="text" placeholder="minutes" />
+        <input type="button" value="GO!" onclick="insertps1()" />
+    </form>
+  
+	<div class="clock-1" style="margin:2em;"></div>
+	
+	<div class="message1"></div>
+	
+	
+    <form>
+        <h1>Please enter data</h1>
+        <input id="hours2" type="text" placeholder="hours" />
+        <input id="minutes2" type="text" placeholder="minutes" />
+        <input type="button" value="GO!" onclick="insertps2()" />
+    </form>
+  
+	<div class="clock-2" style="margin:2em;"></div>
+	
+	<div class="message2"></div>
+
+	<script type="text/javascript">
+        function insertps1 () {
+            var hours1 = document.getElementById("hours1");
+            var minutes1 = document.getElementById("minutes1");
+            
+        var clocks = [];
+        
+		$(document).ready(function() {
+			clocks.push($('.clock-1').FlipClock(hours1.value,{
+		        clockFace: 'HourlyCounter',
+				countdown: true,
+				autoStart: true,
+                autoplay: true,
+                callbacks: {
+		        	stop: function() {
+		        		$('.message1').html('PS 1 Finished!');
+                    }
+		        }
+		    }));
+            
+            
+		});
+        
+        }
+        
+	
+        function insertps2 () {
+            var hours2 = document.getElementById("hours2");
+            var minutes2 = document.getElementById("minutes2");
+            
+        var clocks = [];
+        
+		$(document).ready(function() {
+			clocks.push($('.clock-2').FlipClock(hours2.value,{
+		        clockFace: 'HourlyCounter',
+				countdown: true,
+				autoStart: true,
+                callbacks: {
+		        	stop: function() {
+		        	 $('.message2').html('PS 2 Finished!');
+		        	}
+		        }
+		    }));
+
+		});
+        
+        }
+        </script>
+	</body>
+</html>
+
+
+

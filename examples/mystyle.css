@@ -1,0 +1,31 @@
+body {
+  width:1300px;
+}
+
+
+
+.psone-clock-container {
+  float: left;
+  margin:0px 100px 0px 100px;
+}
+
+.pstwo-clock-container {
+  float: left;
+  clear:right;
+}
+
+.psthree-clock-container {
+  float: left;
+  margin:0px 100px 0px 100px;
+}
+
+.psfour-clock-container {
+  float: left;
+  clear:right;
+}
+
+.billard-clock-container {
+  float:left;
+  margin-bottom: 50px;
+  margin-left: 100px;
+}
