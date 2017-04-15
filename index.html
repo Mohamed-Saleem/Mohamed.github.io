@@ -27,7 +27,7 @@
 		    </form>
 
 				<form>
-		        <input type="button" value="Limitles" onclick="clockstartpsone(4); timerecordpsone();" />
+		        <input type="button" value="Limitles" onclick="clockstartpsone(3); timerecordpsone();" />
 		    </form>
 
 			<div class="psone-clock" style="margin:2em;"></div>
@@ -52,7 +52,7 @@
 			</form>
 
 			<form>
-					<input type="button" value="Limitles" onclick="clockstartpstwo(4);  timerecordpstwo();" />
+					<input type="button" value="Limitles" onclick="clockstartpstwo(3);  timerecordpstwo();" />
 			</form>
 
 		<div class="pstwo-clock" style="margin:2em;"></div>
@@ -77,7 +77,7 @@
 			</form>
 
 			<form>
-					<input type="button" value="Limitles" onclick="clockstartpsthree(4); timerecordpsthree();" />
+					<input type="button" value="Limitles" onclick="clockstartpsthree(3); timerecordpsthree();" />
 			</form>
 
 		<div class="psthree-clock" style="margin:2em;"></div>
@@ -102,7 +102,7 @@
 			</form>
 
 			<form>
-					<input type="button" value="Limitles" onclick="clockstartpsfour(4); timerecordpsfour();" />
+					<input type="button" value="Limitles" onclick="clockstartpsfour(3); timerecordpsfour();" />
 			</form>
 
 		<div class="psfour-clock" style="margin:2em;"></div>
@@ -123,11 +123,11 @@
 			</form>
 
 			<form>
-					<input type="button" value="Two" onclick="clockstartbillard(2); timerecordbillard();" />
+					<input type="button" value="Two Hours" onclick="clockstartbillard(2); timerecordbillard();" />
 			</form>
 
 			<form>
-					<input type="button" value="Limitles" onclick="clockstartbillard(4); timerecordbillard();" />
+					<input type="button" value="Limitles" onclick="clockstartbillard(3); timerecordbillard();" />
 			</form>
 
 		<div class="billard-clock" style="margin:2em;"></div>
@@ -147,15 +147,19 @@
 								document.getElementById("timepsone").innerHTML=message;
 						}
 						function clockstartpsone(x) {
-
-
-
+							if (x > 2) {
+								var downward = false;
+								x = 0;
+							}else {
+								downward = true;
+							}
 							var clock = new FlipClock($('.psone-clock'),x*3600, {
 								// ... your options here
 
 								clockFace: 'HourlyCounter',
 								autoStart: true,
-								countdown: true,
+								countdown: downward,
+
 								callbacks: {
 									interval: function() {
 												var time = this.factory.getTime().time;
@@ -187,11 +191,19 @@
 			}
 
 			function clockstartpstwo(x) {
+
+				if (x > 2) {
+					var downward = false;
+					x = 0;
+				}else {
+					downward = true;
+				}
+
 				var clock = new FlipClock($('.pstwo-clock'),x*3600, {
 					// ... your options here
 					clockFace: 'HourlyCounter',
 					autoStart: true,
-					countdown: true,
+					countdown: downward,
 					callbacks: {
 						interval: function() {
 									var time = this.factory.getTime().time;
@@ -219,11 +231,17 @@
 			}
 
 			function clockstartpsthree(x) {
+				if (x > 2) {
+					var downward = false;
+					x = 0;
+				}else {
+					downward = true;
+				}
 				var clock = new FlipClock($('.psthree-clock'),x*3600, {
 					// ... your options here
 					clockFace: 'HourlyCounter',
 					autoStart: true,
-					countdown: true,
+					countdown: downward,
 					callbacks: {
 						interval: function() {
 									var time = this.factory.getTime().time;
@@ -251,11 +269,17 @@
 			}
 
 			function clockstartpsfour(x) {
+				if (x > 2) {
+					var downward = false;
+					x = 0;
+				}else {
+					downward = true;
+				}
 				var clock = new FlipClock($('.psfour-clock'),x*3600, {
 					// ... your options here
 					clockFace: 'HourlyCounter',
 					autoStart: true,
-					countdown: true,
+					countdown: downward,
 					callbacks: {
 						interval: function() {
 									var time = this.factory.getTime().time;
@@ -283,27 +307,32 @@
 			}
 
 			function clockstartbillard(x) {
+				if (x > 2) {
+					var downward = false;
+					x = 0;
+				}else {
+					downward = true;
+				}
 				var clock = new FlipClock($('.billard-clock'),x*3600, {
 					// ... your options here
 					clockFace: 'HourlyCounter',
 					autoStart: true,
-					countdown: true,
+					countdown: downward,
 					callbacks: {
 						interval: function() {
 									var time = this.factory.getTime().time;
 
 									if(time == 600) {
-										$('.billardmessage').html('10 Minutes left');
+										$('.psfourmessage').html('10 Minutes left');
 										var audio = new Audio('audio_file.mp3');
 										audio.play();
 									}
 								},
 								stop: function() {
-									$('.billardmessage').html('the end');
+									$('.psfourmessage').html('the end');
 								}
 							}
 						})};
-
 
 
     </script>
