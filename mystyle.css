@@ -1,0 +1,192 @@
+/**Generaal Style**/
+body {
+  width:100%;
+  margin-top: 73px;
+
+}
+
+form {
+
+  width: 90%;
+  display: block;
+  margin: auto;
+}
+
+textarea {
+  margin: auto;
+}
+
+h4 {
+  margin-bottom: -10px;
+}
+
+form,h4 {
+  margin-bottom :10px;
+}
+p {
+  margin-left: 7px;
+}
+
+.events, .messages {
+  margin: auto;
+  height: 10%;
+  width: 90%;
+}
+
+
+
+/** Start PS one container style **/
+.psone-clock-container {
+  width: 19%;
+  height: 85%;
+  display: inline-block;
+  vertical-align:top;
+  margin-left: 8px;
+  border: solid;
+  border-radius: 5px;
+}
+
+
+.psone-clock {
+  width: 90%;
+  display: block;
+  margin:20px 0px 20px 40px;
+}
+
+
+/**End PS one container style**/
+
+/****************************************/
+
+/** Start PS two container style **/
+.pstwo-clock-container {
+  width: 19%;
+  height: 85%;
+
+  display: inline-block;
+  vertical-align:top;
+  border: solid;
+  border-radius: 5px;
+
+}
+
+
+.pstwo-clock {
+  width: 90%;
+  display: block;
+  margin:20px 0px 20px 40px;
+}
+
+/**End PS two container style**/
+
+
+/****************************************/
+
+
+/** Start PS three container style **/
+.psthree-clock-container {
+  width: 19%;
+  height: 85%;
+
+  display: inline-block;
+  vertical-align:top;
+  border: solid;
+  border-radius: 5px;
+}
+
+
+.psthree-clock {
+  width: 90%;
+  display: block;
+  margin:20px 0px 20px 40px;
+}
+
+/**End PS three container style**/
+
+
+/****************************************/
+
+
+/** Start PS four container style **/
+.psfour-clock-container {
+  width: 19%;
+  height: 85%;
+
+  display: inline-block;
+  vertical-align:top;
+  border: solid;
+  border-radius: 5px;
+}
+
+
+.psfour-clock {
+  width: 90%;
+  display: block;
+  margin:20px 0px 20px 40px;
+}
+
+/**End PS four container style**/
+
+
+/****************************************/
+
+
+/** Start Billard one container style **/
+.billard-clock-container {
+  width: 19%;
+  height: 85%;
+
+  display: inline-block;
+  vertical-align:top;
+  border: solid;
+  border-radius: 5px;
+}
+
+
+.billard-clock {
+  width: 90%;
+  display: block;
+  margin:20px 0px 20px 40px;
+}
+
+/**End Billard one container style**/
+
+/****************************************/
+
+/** Start Buttons style **/
+
+.button-success,
+.button-error,
+.button-warning,
+.button-secondary {
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.button-success {
+    background: rgb(28, 184, 65); /* this is a green */
+}
+
+.button-error {
+    background: rgb(202, 60, 60); /* this is a maroon */
+}
+
+.button-warning {
+    background: rgb(223, 117, 20); /* this is an orange */
+}
+
+.button-secondary {
+    background: rgb(66, 184, 221); /* this is a light blue */
+}
+
+.button-small {
+  font-size: 90%;
+  width: 100%;
+}
+
+.pure-input {
+  width: 100%;
+  height: 30px;
+  margin-right: 2px;
+}
