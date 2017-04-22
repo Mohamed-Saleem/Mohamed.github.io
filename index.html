@@ -50,7 +50,7 @@
 						<input type="button" class="button-small button-secondary pure-button" value="30 Mins" onclick="clockstartpstwo(0.5); timerecordpstwo();" />
 						<input type="button" class="button-small button-success pure-button" value="60 Mins" onclick="clockstartpstwo(1); timerecordpstwo();" />
 						<input type="button" class="button-small button-error pure-button" value="Open" onclick="clockstartpstwo(100); timerecordpstwo();" />
-						<input id="hours1" type="text" class="pure-input" placeholder="hours" />
+						<input id="hours2" type="text" class="pure-input" placeholder="hours" />
 						<input type="button" class="button-small pure-button-primary pure-button" value="GO!" onclick="clockstartpstwo(); timerecordpstwo();" />
 						<fieldset class="pure-group">
 							<h4>Notes : </h4>
@@ -79,7 +79,7 @@
 						<input type="button" class="button-small button-secondary pure-button" value="30 Mins" onclick="clockstartpsthree(0.5); timerecordpsthree();" />
 						<input type="button" class="button-small button-success pure-button" value="60 Mins" onclick="clockstartpsthree(1); timerecordpsthree();" />
 						<input type="button" class="button-small button-error pure-button" value="Open" onclick="clockstartpsthree(100); timerecordpsthree();" />
-						<input id="hours1" type="text" class="pure-input" placeholder="hours" />
+						<input id="hours3" type="text" class="pure-input" placeholder="hours" />
 						<input type="button" class="button-small pure-button-primary pure-button" value="GO!" onclick="clockstartpsthree(); timerecordpsthree();" />
 						<fieldset class="pure-group">
 							<h4>Notes : </h4>
@@ -108,7 +108,7 @@
 						<input type="button" class="button-small button-secondary pure-button" value="30 Mins" onclick="clockstartpsfour(0.5); timerecordpsfour();" />
 						<input type="button" class="button-small button-success pure-button" value="60 Mins" onclick="clockstartpsfour(1); timerecordpsfour();" />
 						<input type="button" class="button-small button-error pure-button" value="Open" onclick="clockstartpsfour(100); timerecordpsfour();" />
-						<input id="hours1" type="text" class="pure-input" placeholder="hours" />
+						<input id="hours4" type="text" class="pure-input" placeholder="hours" />
 						<input type="button" class="button-small pure-button-primary pure-button" value="GO!" onclick="clockstartpsfour(); timerecordpsfour();" />
 						<fieldset class="pure-group">
 							<h4>Notes : </h4>
@@ -137,7 +137,7 @@
 						<input type="button" class="button-small button-secondary pure-button" value="30 Mins" onclick="clockstartbillard(0.5); timerecordbillard();" />
 						<input type="button" class="button-small button-success pure-button" value="60 Mins" onclick="clockstartbillard(1); timerecordbillard();" />
 						<input type="button" class="button-small button-error pure-button" value="Open" onclick="clockstartbillard(100); timerecordbillard();" />
-						<input id="hours1" type="text" class="pure-input" placeholder="hours" />
+						<input id="hoursbillard" type="text" class="pure-input" placeholder="hours" />
 						<input type="button" class="button-small pure-button-primary pure-button" value="GO!" onclick="clockstartbillard(); timerecordbillard();" />
 						<fieldset class="pure-group">
 							<h4>Notes : </h4>
@@ -219,7 +219,7 @@
 			function clockstartpstwo(x) {
 
 				if (x == undefined) {
-					var hours1 = document.getElementById("hours1");
+					var hours1 = document.getElementById("hours2");
 					x = hours1.value;
 					var downward = true;
 				}else if (x==100) {
@@ -258,10 +258,14 @@
 					var message = "PS Three Started at" +" "+( h % 12 || 12 )+ " : " +m+" : "+s;
 					document.getElementById("timepsthree").innerHTML=message;
 			}
-
 			function clockstartpsthree(x) {
-				if (x > 2) {
-					var downward = false;
+
+				if (x == undefined) {
+					var hours1 = document.getElementById("hours3");
+					x = hours1.value;
+					var downward = true;
+				}else if (x==100) {
+					downward = false;
 					x = 0;
 				}else {
 					downward = true;
@@ -298,8 +302,13 @@
 			}
 
 			function clockstartpsfour(x) {
-				if (x > 2) {
-					var downward = false;
+
+				if (x == undefined) {
+					var hours1 = document.getElementById("hours4");
+					x = hours1.value;
+					var downward = true;
+				}else if (x==100) {
+					downward = false;
 					x = 0;
 				}else {
 					downward = true;
@@ -336,8 +345,13 @@
 			}
 
 			function clockstartbillard(x) {
-				if (x > 2) {
-					var downward = false;
+
+				if (x == undefined) {
+					var hours1 = document.getElementById("hoursbillard");
+					x = hours1.value;
+					var downward = true;
+				}else if (x==100) {
+					downward = false;
 					x = 0;
 				}else {
 					downward = true;
