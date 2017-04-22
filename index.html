@@ -189,7 +189,7 @@
 									interval: function() {
 												var time = this.factory.getTime().time;
 
-												if(time == 600) {
+												if(time == 600 || time == 0) {
 													$('.psonemessage').html('10 Minutes left');
 													var audio = new Audio('audio_file.mp3');
 													audio.play();
