@@ -205,6 +205,7 @@
 
 									})};
 
+
 			// **************************** PS Two ********************************* //
 			function timerecordpstwo(){
 					var t = new Date();
@@ -217,13 +218,16 @@
 
 			function clockstartpstwo(x) {
 
-				if (x > 2) {
-					var downward = false;
+				if (x == undefined) {
+					var hours1 = document.getElementById("hours1");
+					x = hours1.value;
+					var downward = true;
+				}else if (x==100) {
+					downward = false;
 					x = 0;
 				}else {
 					downward = true;
 				}
-
 				var clock = new FlipClock($('.pstwo-clock'),x*3600, {
 					// ... your options here
 					clockFace: 'HourlyCounter',
