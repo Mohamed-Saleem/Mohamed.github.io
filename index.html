@@ -155,10 +155,10 @@
 
 <script type="text/javascript">
 
-		// **************************** Checking and setting local storage for the first time ********************************* //
+		// **************************** Checking and setting local storage and global variables for the first time ********************************* //
 
 
-						//localStorage.clear();
+						// Deploy the counters
 						function deploy(x){
 								 clockstartpsone(x);
 								 clockstartpstwo(x);
@@ -167,6 +167,7 @@
 								 clockstartbillard(x);
 							}
 
+						// save timers on reload
 						function savetimers(){
 							savexpsone();
 							savexpstwo();
@@ -514,7 +515,7 @@
 												interval: function() {
 															var time = this.factory.getTime().time;
 															var audio = new Audio('audio_file.mp3');
-															localStorage.localxbillard = time/3600;
+															savedtimebillard = time/3600;
 															if(time == 600) {
 																$('.billardemessage').html('10 Minutes left');
 
