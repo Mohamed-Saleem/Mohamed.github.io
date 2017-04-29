@@ -5,39 +5,39 @@
 		<link rel="stylesheet" href="compiled/flipclock.css">
 		<link rel="stylesheet" href="mystyle.css">
 
+
 		<script src="compiled/jquery.min.js"></script>
 		<script src="compiled/flipclock.js"></script>
 	</head>
-	<body onload="clockstartpsone(0); clockstartpstwo(0);
-	 clockstartpsthree(0); clockstartpsfour(0); clockstartbillard(0); ">
-
+	<body onload="deploy()" onunload="savetimers()">
 
 <!--**************************PS One*************************-->
 
 <div class="psone-clock-container">
-
 				<div class="psone-clock"></div>
 				<form class="pure-form">
-						<input type="button" class="button-small button-secondary pure-button" value="30 Mins" onclick="clockstartpsone(0.5); timerecordpsone();" />
-						<input type="button" class="button-small button-success pure-button" value="60 Mins" onclick="clockstartpsone(1); timerecordpsone();" />
-						<input type="button" class="button-small button-error pure-button" value="Open" onclick="clockstartpsone(100); timerecordpsone();" />
+
+						<input type="button" class="button-small button-secondary pure-button" value="30 Mins" onclick="clockstartpsone('half'); timerecordpsone();" />
+						<input type="button" class="button-small button-success pure-button" value="60 Mins" onclick="clockstartpsone('hour'); timerecordpsone();" />
+						<input type="button" class="button-small button-error pure-button" value="Open" onclick="clockstartpsone('unlimited'); timerecordpsone();" />
 						<input id="hours1" type="text" class="pure-input" placeholder="hours" />
-						<input type="button" class="button-small pure-button-primary pure-button" value="GO!" onclick="clockstartpsone(); timerecordpsone();" />
+						<input type="button" class="button-small pure-button-primary pure-button" value="GO!" onclick="clockstartpsone('hours1'); timerecordpsone();" />
+
 						<fieldset class="pure-group">
 							<h4>Notes : </h4>
 							<textarea class="pure-input-1" placeholder="Textareas work too"></textarea>
 						</fieldset>
+
+						<div class="events">
+							<h4>Events : </h4>
+							<p id="timepsone"></p>
+							<p class="psonemessage"></p>
+						</div>
+						<input type="button" class="button-small button-warning pure-button" value="Reset!" onclick="resetpsone();" />
 				</form>
 
-				<div class="events">
-					<h4>Events : </h4>
-					<p id="timepsone"></p>
-				</div>
 
-				<div class="messages">
-					<h4>Messages :</h4>
-					<p class="psonemessage"></p>
-				</div>
+
 </div>
 
 
@@ -47,26 +47,25 @@
 
 				<div class="pstwo-clock"></div>
 				<form class="pure-form">
-						<input type="button" class="button-small button-secondary pure-button" value="30 Mins" onclick="clockstartpstwo(0.5); timerecordpstwo();" />
-						<input type="button" class="button-small button-success pure-button" value="60 Mins" onclick="clockstartpstwo(1); timerecordpstwo();" />
-						<input type="button" class="button-small button-error pure-button" value="Open" onclick="clockstartpstwo(100); timerecordpstwo();" />
+						<input type="button" class="button-small button-secondary pure-button" value="30 Mins" onclick="clockstartpstwo('half'); timerecordpstwo();" />
+						<input type="button" class="button-small button-success pure-button" value="60 Mins" onclick="clockstartpstwo('hour'); timerecordpstwo();" />
+						<input type="button" class="button-small button-error pure-button" value="Open" onclick="clockstartpstwo('unlimited'); timerecordpstwo();" />
 						<input id="hours2" type="text" class="pure-input" placeholder="hours" />
-						<input type="button" class="button-small pure-button-primary pure-button" value="GO!" onclick="clockstartpstwo(); timerecordpstwo();" />
+						<input type="button" class="button-small pure-button-primary pure-button" value="GO!" onclick="clockstartpstwo('hours2'); timerecordpstwo();" />
+
 						<fieldset class="pure-group">
 							<h4>Notes : </h4>
 							<textarea class="pure-input-1" placeholder="Textareas work too"></textarea>
 						</fieldset>
+
+										<div class="events">
+											<h4>Events : </h4>
+											<p id="timepstwo"></p>
+											<p class="pstwomessage"></p>
+										</div>
+										<input type="button" class="button-small button-warning pure-button" value="Reset!" onclick="resetpstwo();" />
 				</form>
 
-				<div class="events">
-					<h4>Events : </h4>
-					<p id="timepstwo"></p>
-				</div>
-
-				<div class="messages">
-					<h4>Messages :</h4>
-					<p class="pstwomessage"></p>
-				</div>
 </div>
 
 
@@ -76,26 +75,26 @@
 
 				<div class="psthree-clock"></div>
 				<form class="pure-form">
-						<input type="button" class="button-small button-secondary pure-button" value="30 Mins" onclick="clockstartpsthree(0.5); timerecordpsthree();" />
-						<input type="button" class="button-small button-success pure-button" value="60 Mins" onclick="clockstartpsthree(1); timerecordpsthree();" />
-						<input type="button" class="button-small button-error pure-button" value="Open" onclick="clockstartpsthree(100); timerecordpsthree();" />
+						<input type="button" class="button-small button-secondary pure-button" value="30 Mins" onclick="clockstartpsthree('half'); timerecordpsthree();" />
+						<input type="button" class="button-small button-success pure-button" value="60 Mins" onclick="clockstartpsthree('hour'); timerecordpsthree();" />
+						<input type="button" class="button-small button-error pure-button" value="Open" onclick="clockstartpsthree('unlimited'); timerecordpsthree();" />
 						<input id="hours3" type="text" class="pure-input" placeholder="hours" />
-						<input type="button" class="button-small pure-button-primary pure-button" value="GO!" onclick="clockstartpsthree(); timerecordpsthree();" />
+						<input type="button" class="button-small pure-button-primary pure-button" value="GO!" onclick="clockstartpsthree('hours3'); timerecordpsthree();" />
+
 						<fieldset class="pure-group">
 							<h4>Notes : </h4>
 							<textarea class="pure-input-1" placeholder="Textareas work too"></textarea>
 						</fieldset>
+
+						<div class="events">
+							<h4>Events : </h4>
+							<p id="timepsthree"></p>
+							<p class="psthreemessage"></p>
+						</div>
+						<input type="button" class="button-small button-warning pure-button" value="Reset!" onclick="resetpsthree();" />
 				</form>
 
-				<div class="events">
-					<h4>Events : </h4>
-					<p id="timepsthree"></p>
-				</div>
 
-				<div class="messages">
-					<h4>Messages :</h4>
-					<p class="psthreemessage"></p>
-				</div>
 </div>
 
 
@@ -105,26 +104,25 @@
 
 				<div class="psfour-clock"></div>
 				<form class="pure-form">
-						<input type="button" class="button-small button-secondary pure-button" value="30 Mins" onclick="clockstartpsfour(0.5); timerecordpsfour();" />
-						<input type="button" class="button-small button-success pure-button" value="60 Mins" onclick="clockstartpsfour(1); timerecordpsfour();" />
-						<input type="button" class="button-small button-error pure-button" value="Open" onclick="clockstartpsfour(100); timerecordpsfour();" />
+						<input type="button" class="button-small button-secondary pure-button" value="30 Mins" onclick="clockstartpsfour('half'); timerecordpsfour();" />
+						<input type="button" class="button-small button-success pure-button" value="60 Mins" onclick="clockstartpsfour('hour'); timerecordpsfour();" />
+						<input type="button" class="button-small button-error pure-button" value="Open" onclick="clockstartpsfour('unlimited'); timerecordpsfour();" />
 						<input id="hours4" type="text" class="pure-input" placeholder="hours" />
-						<input type="button" class="button-small pure-button-primary pure-button" value="GO!" onclick="clockstartpsfour(); timerecordpsfour();" />
+						<input type="button" class="button-small pure-button-primary pure-button" value="GO!" onclick="clockstartpsfour('hours4'); timerecordpsfour();" />
+
 						<fieldset class="pure-group">
 							<h4>Notes : </h4>
 							<textarea class="pure-input-1" placeholder="Textareas work too"></textarea>
 						</fieldset>
+
+										<div class="events">
+											<h4>Events : </h4>
+											<p id="timepsfour"></p>
+											<p class="psfourmessage"></p>
+										</div>
+										<input type="button" class="button-small button-warning pure-button" value="Reset!" onclick="resetpsfour();" />
 				</form>
 
-				<div class="events">
-					<h4>Events : </h4>
-					<p id="timepsfour"></p>
-				</div>
-
-				<div class="messages">
-					<h4>Messages :</h4>
-					<p class="psfourmessage"></p>
-				</div>
 </div>
 
 
@@ -134,248 +132,429 @@
 
 				<div class="billard-clock"></div>
 				<form class="pure-form">
-						<input type="button" class="button-small button-secondary pure-button" value="30 Mins" onclick="clockstartbillard(0.5); timerecordbillard();" />
-						<input type="button" class="button-small button-success pure-button" value="60 Mins" onclick="clockstartbillard(1); timerecordbillard();" />
-						<input type="button" class="button-small button-error pure-button" value="Open" onclick="clockstartbillard(100); timerecordbillard();" />
+						<input type="button" class="button-small button-secondary pure-button" value="30 Mins" onclick="clockstartbillard('half'); timerecordbillard();" />
+						<input type="button" class="button-small button-success pure-button" value="60 Mins" onclick="clockstartbillard('hour'); timerecordbillard();" />
+						<input type="button" class="button-small button-error pure-button" value="Open" onclick="clockstartbillard('unlimited'); timerecordbillard();" />
 						<input id="hoursbillard" type="text" class="pure-input" placeholder="hours" />
-						<input type="button" class="button-small pure-button-primary pure-button" value="GO!" onclick="clockstartbillard(); timerecordbillard();" />
+						<input type="button" class="button-small pure-button-primary pure-button" value="GO!" onclick="clockstartbillard('hoursbillard'); timerecordbillard();" />
+
 						<fieldset class="pure-group">
 							<h4>Notes : </h4>
 							<textarea class="pure-input-1" placeholder="Textareas work too"></textarea>
 						</fieldset>
+
+										<div class="events">
+											<h4>Events : </h4>
+											<p id="timebillard"></p>
+											<p class="billardmessage"></p>
+										</div>
+										<input type="button" class="button-small button-warning pure-button" value="Reset!" onclick="resetbillard();" />
 				</form>
 
-				<div class="events">
-					<h4>Events : </h4>
-					<p id="timebillard"></p>
-				</div>
-
-				<div class="messages">
-					<h4>Messages :</h4>
-					<p class="billardmessage"></p>
-				</div>
 </div>
 
 <script type="text/javascript">
-		// **************************** PS One ********************************* //
 
-						function timerecordpsone(){
-								var t = new Date();
-								var h = t.getHours();
-								var m = t.getMinutes();
-								var s = t.getSeconds();
-								var message = "PS One Started at" +" "+( h % 12 || 12 )+ " : " +m+" : "+s;
-								document.getElementById("timepsone").innerHTML=message;
-						}
-						function clockstartpsone(x) {
-							if (x == undefined) {
-								var hours1 = document.getElementById("hours1");
-								x = hours1.value;
-								var downward = true;
-							}else if (x==100) {
-								downward = false;
-								x = 0;
-							}else {
-								downward = true;
+		// **************************** Checking and setting local storage for the first time ********************************* //
+
+
+						//localStorage.clear();
+						function deploy(x){
+								 clockstartpsone(x);
+								 clockstartpstwo(x);
+								 clockstartpsthree(x);
+								 clockstartpsfour(x);
+								 clockstartbillard(x);
 							}
+
+						function savetimers(){
+							savexpsone();
+							savexpstwo();
+							savexpsthree();
+							savexpsfour();
+							savexbillard();
+						}
+
+						var savedtimepsone, savedtimepstwo, savedtimepsthree, savedtimepsfour, savedtimebillard;
+		// **************************** Launching the counters with default value = localxs ********************************* //
+
+		// **************************** PS One *********************************
+
+						var localxpsone = parseFloat(localStorage.localxpsone);
+
+						function clockstartpsone(x) {
+							console.log(x);
+								if (x == "unlimited") {
+									x = 5;
+									var count = true;
+								}else if (x == "hours1") {
+									var hours1 = document.getElementById("hours1");
+									x = hours1.value;
+									count = true;
+								}else if (x == 'hour'){
+									x = 1;
+									var count = true;
+								}else if (x == 'half'){
+									x = 0.5;
+									var count = true;
+								}else {
+									x = localxpsone;
+									var count = true;
+								}
+
+
 							var clock = new FlipClock($('.psone-clock'),x*3600, {
 								// ... your options here
-
 								clockFace: 'HourlyCounter',
 								autoStart: true,
-								countdown: downward,
+								countdown: count,
+
 
 								callbacks: {
 									interval: function() {
 												var time = this.factory.getTime().time;
-
-												if(time == 600 || time == 0) {
+												var audio = new Audio('audio_file.mp3');
+												savedtimepsone = time/3600;
+												if(time == 600) {
 													$('.psonemessage').html('10 Minutes left');
-													var audio = new Audio('audio_file.mp3');
+
+													audio.play();
+												}else if (time == 0) {
 													audio.play();
 												}
 											},
+
 											stop: function() {
-												$('.psonemessage').html('the end');
+												var t = new Date();
+												var h = t.getHours();
+												var m = t.getMinutes();
+												var s = t.getSeconds();
+												$('.psonemessage').html("PS One Finished at" +" "+( h % 12 || 12 )+ " : " +m);
+
+
+// Optional callback will fire after the clock resets
 											}
+
 										}
-
-
-
-
 									})};
 
+									function timerecordpsone(){
+											var t = new Date();
+											var h = t.getHours();
+											var m = t.getMinutes();
+											var s = t.getSeconds();
+											var message = "PS One Started at" +" "+( h % 12 || 12 )+ " : " +m;
+											document.getElementById("timepsone").innerHTML=message;
+											$('.psonemessage').html("");
+									}
 
+									function resetpsone() {
+										//localStorage.removeItem("localxpsone");
+										savedtimepsone = 0;
+										location.reload();
+									}
+
+									function savexpsone() {
+										localStorage.localxpsone = savedtimepsone;
+									}
 			// **************************** PS Two ********************************* //
-			function timerecordpstwo(){
-					var t = new Date();
-					var h = t.getHours();
-					var m = t.getMinutes();
-					var s = t.getSeconds();
-					var message = "PS Two Started at" +" "+( h % 12 || 12 )+ " : " +m+" : "+s;
-					document.getElementById("timepstwo").innerHTML=message;
-			}
 
-			function clockstartpstwo(x) {
+									var localxpstwo = parseFloat(localStorage.localxpstwo);
 
-				if (x == undefined) {
-					var hours1 = document.getElementById("hours2");
-					x = hours1.value;
-					var downward = true;
-				}else if (x==100) {
-					downward = false;
-					x = 0;
-				}else {
-					downward = true;
-				}
-				var clock = new FlipClock($('.pstwo-clock'),x*3600, {
-					// ... your options here
-					clockFace: 'HourlyCounter',
-					autoStart: true,
-					countdown: downward,
-					callbacks: {
-						interval: function() {
-									var time = this.factory.getTime().time;
+									function clockstartpstwo(x) {
+											if (x == "unlimited") {
+												x = 5;
+												var count = true;
+											}else if (x == "hours2") {
+												var hours1 = document.getElementById("hours2");
+												x = hours1.value;
+												count = true;
+											}else if (x == 'hour'){
+												x = 1;
+												var count = true;
+											}else if (x == 'half'){
+												x = 0.5;
+												var count = true;
+											}else {
+												x = localxpstwo;
+												var count = true;
+											}
 
-									if(time == 600) {
-										$('.pstwomessage').html('10 Minutes left');
-										var audio = new Audio('audio_file.mp3');
-										audio.play();
-									}
-								},
-								stop: function() {
-									$('.pstwomessage').html('the end');
-								}
-							}
-						})};
 
+										var clock = new FlipClock($('.pstwo-clock'),x*3600, {
+											// ... your options here
+											clockFace: 'HourlyCounter',
+											autoStart: true,
+											countdown: count,
+
+											callbacks: {
+												interval: function() {
+															var time = this.factory.getTime().time;
+															var audio = new Audio('audio_file.mp3');
+															savedtimepstwo = time/3600;
+															if(time == 600) {
+																$('.pstwomessage').html('10 Minutes left');
+
+																audio.play();
+															}else if (time == 0) {
+																audio.play();
+															}
+														},
+														stop: function() {
+															var t = new Date();
+															var h = t.getHours();
+															var m = t.getMinutes();
+															var s = t.getSeconds();
+															$('.pstwomessage').html("PS Two Finished at" +" "+( h % 12 || 12 )+ " : " +m);
+														}
+													}
+												})};
+
+												function timerecordpstwo(){
+														var t = new Date();
+														var h = t.getHours();
+														var m = t.getMinutes();
+														var s = t.getSeconds();
+														var message = "PS Two Started at" +" "+( h % 12 || 12 )+ " : " +m;
+														document.getElementById("timepstwo").innerHTML=message;
+														$('.pstwomessage').html("");
+												}
+
+												function resetpstwo() {
+													//localStorage.removeItem("localxpstwo");
+													savedtimepstwo = 0;
+													location.reload();
+												}
+
+
+
+
+												function savexpstwo() {
+													localStorage.localxpstwo = savedtimepstwo;
+												}
 			// **************************** PS Three ********************************* //
-			function timerecordpsthree(){
-					var t = new Date();
-					var h = t.getHours();
-					var m = t.getMinutes();
-					var s = t.getSeconds();
-					var message = "PS Three Started at" +" "+( h % 12 || 12 )+ " : " +m+" : "+s;
-					document.getElementById("timepsthree").innerHTML=message;
-			}
-			function clockstartpsthree(x) {
+									var localxpsthree = parseFloat(localStorage.localxpsthree);
 
-				if (x == undefined) {
-					var hours1 = document.getElementById("hours3");
-					x = hours1.value;
-					var downward = true;
-				}else if (x==100) {
-					downward = false;
-					x = 0;
-				}else {
-					downward = true;
-				}
-				var clock = new FlipClock($('.psthree-clock'),x*3600, {
-					// ... your options here
-					clockFace: 'HourlyCounter',
-					autoStart: true,
-					countdown: downward,
-					callbacks: {
-						interval: function() {
-									var time = this.factory.getTime().time;
+									function clockstartpsthree(x) {
+											if (x == "unlimited") {
+												x = 5;
+												var count = true;
+											}else if (x == "hours1") {
+												var hours1 = document.getElementById("hours3");
+												x = hours3.value;
+												count = true;
+											}else if (x == 'hour'){
+												x = 1;
+												var count = true;
+											}else if (x == 'half'){
+												x = 0.5;
+												var count = true;
+											}else {
+												x = localxpsthree;
+												var count = true;
+											}
 
-									if(time == 600) {
-										$('.psthreemessage').html('10 Minutes left');
-										var audio = new Audio('audio_file.mp3');
-										audio.play();
-									}
-								},
-								stop: function() {
-									$('.psthreemessage').html('the end');
-								}
-							}
-						})};
 
+										var clock = new FlipClock($('.psthree-clock'),x*3600, {
+											// ... your options here
+											clockFace: 'HourlyCounter',
+											autoStart: true,
+											countdown: count,
+
+											callbacks: {
+												interval: function() {
+															var time = this.factory.getTime().time;
+															var audio = new Audio('audio_file.mp3');
+															savedtimepsthree = time/3600;
+															if(time == 600) {
+																$('.pstheermessage').html('10 Minutes left');
+
+																audio.play();
+															}else if (time == 0) {
+																audio.play();
+															}
+														},
+														stop: function() {
+															var t = new Date();
+															var h = t.getHours();
+															var m = t.getMinutes();
+															var s = t.getSeconds();
+															$('.psthreemessage').html("PS Three Finished at" +" "+( h % 12 || 12 )+ " : " +m);
+														}
+													}
+												})};
+
+												function timerecordpsthree(){
+														var t = new Date();
+														var h = t.getHours();
+														var m = t.getMinutes();
+														var s = t.getSeconds();
+														var message = "PS Three Started at" +" "+( h % 12 || 12 )+ " : " +m;
+														document.getElementById("timepsthree").innerHTML=message;
+														$('.psthreemessage').html("");
+												}
+
+												function resetpsthree() {
+													//localStorage.removeItem("localxpsthree");
+													savedtimepsthree = 0;
+													location.reload();
+												}
+
+
+
+												function savexpsthree() {
+													localStorage.localxpsthree = savedtimepsthree;
+												}
 			// **************************** PS Four ********************************* //
-			function timerecordpsfour(){
-					var t = new Date();
-					var h = t.getHours();
-					var m = t.getMinutes();
-					var s = t.getSeconds();
-					var message = "PS Four Started at" +" "+( h % 12 || 12 )+ " : " +m+" : "+s;
-					document.getElementById("timepsfour").innerHTML=message;
-			}
 
-			function clockstartpsfour(x) {
+									var localxpsfour = parseFloat(localStorage.localxpsfour);
 
-				if (x == undefined) {
-					var hours1 = document.getElementById("hours4");
-					x = hours1.value;
-					var downward = true;
-				}else if (x==100) {
-					downward = false;
-					x = 0;
-				}else {
-					downward = true;
-				}
-				var clock = new FlipClock($('.psfour-clock'),x*3600, {
-					// ... your options here
-					clockFace: 'HourlyCounter',
-					autoStart: true,
-					countdown: downward,
-					callbacks: {
-						interval: function() {
-									var time = this.factory.getTime().time;
+									function clockstartpsfour(x) {
+										console.log(x);
+											if (x == "unlimited") {
+												x = 5;
+												var count = true;
+											}else if (x == "hours4") {
+												var hours1 = document.getElementById("hours4");
+												x = hours4.value;
+												count = true;
+											}else if (x == 'hour'){
+												x = 1;
+												var count = true;
+											}else if (x == 'half'){
+												x = 0.5;
+												var count = true;
+											}else {
+												x = localxpsfour;
+												var count = true;
+											}
 
-									if(time == 600) {
-										$('.psfourmessage').html('10 Minutes left');
-										var audio = new Audio('audio_file.mp3');
-										audio.play();
-									}
-								},
-								stop: function() {
-									$('.psfourmessage').html('the end');
-								}
-							}
-						})};
 
+										var clock = new FlipClock($('.psfour-clock'),x*3600, {
+											// ... your options here
+											clockFace: 'HourlyCounter',
+											autoStart: true,
+											countdown: count,
+
+											callbacks: {
+												interval: function() {
+															var time = this.factory.getTime().time;
+															var audio = new Audio('audio_file.mp3');
+															savedtimepsfour = time/3600;
+															if(time == 600) {
+																$('.psfourmessage').html('10 Minutes left');
+
+																audio.play();
+															}else if (time == 0) {
+																audio.play();
+															}
+														},
+														stop: function() {
+															var t = new Date();
+															var h = t.getHours();
+															var m = t.getMinutes();
+															var s = t.getSeconds();
+															$('.psfourmessage').html("PS Four Finished at" +" "+( h % 12 || 12 )+ " : " +m);
+														}
+													}
+												})};
+
+												function timerecordpsfour(){
+														var t = new Date();
+														var h = t.getHours();
+														var m = t.getMinutes();
+														var s = t.getSeconds();
+														var message = "PS Four Started at" +" "+( h % 12 || 12 )+ " : " +m;
+														document.getElementById("timepsfour").innerHTML=message;
+														$('.psfourmessage').html("");
+												}
+
+												function resetpsfour() {
+													//localStorage.removeItem("localxpsfour");
+													savedtimepsfour = 0;
+													location.reload();
+												}
+
+
+
+
+												function savexpsfour() {
+													localStorage.localxpsfour = savedtimepsfour;
+												}
 			// **************************** Billard ********************************* //
-			function timerecordbillard(){
-					var t = new Date();
-					var h = t.getHours();
-					var m = t.getMinutes();
-					var s = t.getSeconds();
-					var message = "Billard Started at" +" "+( h % 12 || 12 )+ " : " +m+" : "+s;
-					document.getElementById("timebillard").innerHTML=message;
-			}
+									var localxbillard = parseFloat(localStorage.localxbillard);
 
-			function clockstartbillard(x) {
+									function clockstartbillard(x) {
+											if (x == "unlimited") {
+												x = 5;
+												var count = true;
+											}else if (x == "hoursbillard") {
+												var hours1 = document.getElementById("hoursbillard");
+												x = hoursbillard.value;
+												count = true;
+											}else if (x == 'hour'){
+												x = 1;
+												var count = true;
+											}else if (x == 'half'){
+												x = 0.5;
+												var count = true;
+											}else {
+												x = localxbillard;
+												var count = true;
+											}
 
-				if (x == undefined) {
-					var hours1 = document.getElementById("hoursbillard");
-					x = hours1.value;
-					var downward = true;
-				}else if (x==100) {
-					downward = false;
-					x = 0;
-				}else {
-					downward = true;
-				}
-				var clock = new FlipClock($('.billard-clock'),x*3600, {
-					// ... your options here
-					clockFace: 'HourlyCounter',
-					autoStart: true,
-					countdown: downward,
-					callbacks: {
-						interval: function() {
-									var time = this.factory.getTime().time;
 
-									if(time == 600) {
-										$('.billardmessage').html('10 Minutes left');
-										var audio = new Audio('audio_file.mp3');
-										audio.play();
-									}
-								},
-								stop: function() {
-									$('.billardmessage').html('the end');
-								}
-							}
-						})};
+										var clock = new FlipClock($('.billard-clock'),x*3600, {
+											// ... your options here
+											clockFace: 'HourlyCounter',
+											autoStart: true,
+											countdown: count,
+
+											callbacks: {
+												interval: function() {
+															var time = this.factory.getTime().time;
+															var audio = new Audio('audio_file.mp3');
+															localStorage.localxbillard = time/3600;
+															if(time == 600) {
+																$('.billardemessage').html('10 Minutes left');
+
+																audio.play();
+															}else if (time == 0) {
+																audio.play();
+															}
+														},
+														stop: function() {
+															var t = new Date();
+															var h = t.getHours();
+															var m = t.getMinutes();
+															var s = t.getSeconds();
+															$('.billardmessage').html("Billard Finished at" +" "+( h % 12 || 12 )+ " : " +m);
+														}
+													}
+												})};
+
+												function timerecordbillard(){
+														var t = new Date();
+														var h = t.getHours();
+														var m = t.getMinutes();
+														var s = t.getSeconds();
+														var message = "Billard Started at" +" "+( h % 12 || 12 )+ " : " +m;
+														document.getElementById("timebillard").innerHTML=message;
+														$('.billardmessage').html("");
+												}
+
+												function resetbillard() {
+													//localStorage.removeItem("localxbillard");
+													savedtimebillard = 0;
+													location.reload();
+												}
+
+
+
+
+												function savexbillard() {
+													localStorage.localxbillard = savedtimebillard;
+												}
 
 				    window.onbeforeunload = confirmExit;
 				        function confirmExit() {
