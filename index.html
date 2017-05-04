@@ -9,11 +9,13 @@
 		<script src="compiled/jquery.min.js"></script>
 		<script src="compiled/flipclock.js"></script>
 	</head>
-	<body onload="deploy()" onunload="savetimers()">
+	<body onload="deploy()">
 
-<!--**************************PS One*************************-->
+<!--**************************PS One************************-->
+
 
 <div class="psone-clock-container">
+	<h3>PlayStation One</h3>
 				<div class="psone-clock"></div>
 				<form class="pure-form">
 
@@ -44,7 +46,7 @@
 <!--**************************PS Two*************************-->
 
 <div class="pstwo-clock-container">
-
+<h3>PlayStation Two</h3>
 				<div class="pstwo-clock"></div>
 				<form class="pure-form">
 						<input type="button" class="button-small button-secondary pure-button" value="30 Mins" onclick="clockstartpstwo('half'); timerecordpstwo();" />
@@ -72,7 +74,7 @@
 <!--**************************PS Three*************************-->
 
 <div class="psthree-clock-container">
-
+<h3>PlayStation Three</h3>
 				<div class="psthree-clock"></div>
 				<form class="pure-form">
 						<input type="button" class="button-small button-secondary pure-button" value="30 Mins" onclick="clockstartpsthree('half'); timerecordpsthree();" />
@@ -101,7 +103,7 @@
 <!--**************************PS Four*************************-->
 
 <div class="psfour-clock-container">
-
+<h3>PlayStation Four</h3>
 				<div class="psfour-clock"></div>
 				<form class="pure-form">
 						<input type="button" class="button-small button-secondary pure-button" value="30 Mins" onclick="clockstartpsfour('half'); timerecordpsfour();" />
@@ -129,7 +131,7 @@
 <!--**************************Billard*************************-->
 
 <div class="billard-clock-container">
-
+<h3>Billard</h3>
 				<div class="billard-clock"></div>
 				<form class="pure-form">
 						<input type="button" class="button-small button-secondary pure-button" value="30 Mins" onclick="clockstartbillard('half'); timerecordbillard();" />
@@ -156,7 +158,7 @@
 <script type="text/javascript">
 
 		// **************************** Checking and setting local storage and global variables for the first time ********************************* //
-
+					//localStorage.clear();
 
 						// Deploy the counters
 						function deploy(x){
@@ -167,16 +169,8 @@
 								 clockstartbillard(x);
 							}
 
-						// save timers on reload
-						function savetimers(){
-							savexpsone();
-							savexpstwo();
-							savexpsthree();
-							savexpsfour();
-							savexbillard();
-						}
-
-						var savedtimepsone, savedtimepstwo, savedtimepsthree, savedtimepsfour, savedtimebillard;
+						// Set global variables
+						var savedtimepsone, savedtimepstwo, savedtimepsthree, savedtimepsfour, savedtimebillard,audio, time;
 		// **************************** Launching the counters with default value = localxs ********************************* //
 
 		// **************************** PS One *********************************
@@ -184,7 +178,6 @@
 						var localxpsone = parseFloat(localStorage.localxpsone);
 
 						function clockstartpsone(x) {
-							console.log(x);
 								if (x == "unlimited") {
 									x = 5;
 									var count = true;
@@ -198,44 +191,38 @@
 								}else if (x == 'half'){
 									x = 0.5;
 									var count = true;
-								}else {
-									x = localxpsone;
+								}else if (x == 0){
 									var count = true;
-								}
+								}else {
+								 x = localxpsone;
+								 var count = true;
+							 }
 
-
-							var clock = new FlipClock($('.psone-clock'),x*3600, {
-								// ... your options here
+							var clockpsone = new FlipClock($('.psone-clock'),x*3600, {
 								clockFace: 'HourlyCounter',
 								autoStart: true,
 								countdown: count,
 
-
 								callbacks: {
 									interval: function() {
-												var time = this.factory.getTime().time;
-												var audio = new Audio('audio_file.mp3');
+												time = this.factory.getTime().time;
+												audio = new Audio('audio_file.mp3');
 												savedtimepsone = time/3600;
 												if(time == 600) {
 													$('.psonemessage').html('10 Minutes left');
-
 													audio.play();
 												}else if (time == 0) {
 													audio.play();
 												}
 											},
 
-											stop: function() {
-												var t = new Date();
-												var h = t.getHours();
-												var m = t.getMinutes();
-												var s = t.getSeconds();
-												$('.psonemessage').html("PS One Finished at" +" "+( h % 12 || 12 )+ " : " +m);
-
-
-// Optional callback will fire after the clock resets
+								 stop: function() {
+								 			var t = new Date();
+											var h = t.getHours();
+											var m = t.getMinutes();
+											var s = t.getSeconds();
+											$('.psonemessage').html("PS One Finished at" +" "+( h % 12 || 12 )+ " : " +m);
 											}
-
 										}
 									})};
 
@@ -246,322 +233,322 @@
 											var s = t.getSeconds();
 											var message = "PS One Started at" +" "+( h % 12 || 12 )+ " : " +m;
 											document.getElementById("timepsone").innerHTML=message;
-											$('.psonemessage').html("");
+											//$('.psonemessage').html("");
 									}
 
 									function resetpsone() {
-										//localStorage.removeItem("localxpsone");
-										savedtimepsone = 0;
-										location.reload();
+										localStorage.localxpsone = 0;
+										clearInterval(psoneinterval);
+										clockstartpsone(0);
+										$('.psonemessage').html("Counter has been reset");
 									}
 
-									function savexpsone() {
+									var psoneinterval = window.setInterval(savepsoneinterval, 3000);
+									function savepsoneinterval() {
 										localStorage.localxpsone = savedtimepsone;
 									}
-			// **************************** PS Two ********************************* //
 
-									var localxpstwo = parseFloat(localStorage.localxpstwo);
 
-									function clockstartpstwo(x) {
-											if (x == "unlimited") {
-												x = 5;
-												var count = true;
-											}else if (x == "hours2") {
-												var hours1 = document.getElementById("hours2");
-												x = hours1.value;
-												count = true;
-											}else if (x == 'hour'){
-												x = 1;
-												var count = true;
-											}else if (x == 'half'){
-												x = 0.5;
-												var count = true;
-											}else {
-												x = localxpstwo;
-												var count = true;
+
+// **************************** PS Two ********************************* //
+
+						var localxpstwo = parseFloat(localStorage.localxpstwo);
+
+						function clockstartpstwo(x) {
+								if (x == "unlimited") {
+									x = 5;
+									var count = true;
+								}else if (x == "hours2") {
+									var hours2 = document.getElementById("hours2");
+									x = hours2.value;
+									count = true;
+								}else if (x == 'hour'){
+									x = 1;
+									var count = true;
+								}else if (x == 'half'){
+									x = 0.5;
+									var count = true;
+								}else if (x == 0){
+									var count = true;
+								}else {
+								 x = localxpstwo;
+								 var count = true;
+							 }
+
+							var clockpstwo = new FlipClock($('.pstwo-clock'),x*3600, {
+								clockFace: 'HourlyCounter',
+								autoStart: true,
+								countdown: count,
+
+								callbacks: {
+									interval: function() {
+												time = this.factory.getTime().time;
+												audio = new Audio('audio_file.mp3');
+												savedtimepstwo = time/3600;
+												if(time == 600) {
+													$('.pstwomessage').html('10 Minutes left');
+													audio.play();
+												}else if (time == 0) {
+													audio.play();
+												}
+											},
+
+								 stop: function() {
+								 			var t = new Date();
+											var h = t.getHours();
+											var m = t.getMinutes();
+											var s = t.getSeconds();
+											$('.pstwomessage').html("PS Two Finished at" +" "+( h % 12 || 12 )+ " : " +m);
 											}
+										}
+									})};
+
+									function timerecordpstwo(){
+											var t = new Date();
+											var h = t.getHours();
+											var m = t.getMinutes();
+											var s = t.getSeconds();
+											var message = "PS Two Started at" +" "+( h % 12 || 12 )+ " : " +m;
+											document.getElementById("timepstwo").innerHTML=message;
+											$('.pstwomessage').html("");
+									}
+
+									function resetpstwo() {
+										localStorage.localxpstwo = 0;
+										clearInterval(pstwointerval);
+										clockstartpstwo(0);
+										$('.pstwomessage').html("Counter has been reset");
+									}
+
+									var pstwointerval = window.setInterval(savepstwointerval, 3000);
+									function savepstwointerval() {
+										localStorage.localxpstwo = savedtimepstwo;
+									}
 
 
-										var clock = new FlipClock($('.pstwo-clock'),x*3600, {
-											// ... your options here
-											clockFace: 'HourlyCounter',
-											autoStart: true,
-											countdown: count,
+// **************************** PS Three ********************************* //
 
-											callbacks: {
-												interval: function() {
-															var time = this.factory.getTime().time;
-															var audio = new Audio('audio_file.mp3');
-															savedtimepstwo = time/3600;
-															if(time == 600) {
-																$('.pstwomessage').html('10 Minutes left');
+						var localxpsthree = parseFloat(localStorage.localxpsthree);
 
-																audio.play();
-															}else if (time == 0) {
-																audio.play();
-															}
-														},
-														stop: function() {
-															var t = new Date();
-															var h = t.getHours();
-															var m = t.getMinutes();
-															var s = t.getSeconds();
-															$('.pstwomessage').html("PS Two Finished at" +" "+( h % 12 || 12 )+ " : " +m);
-														}
-													}
-												})};
+						function clockstartpsthree(x) {
+								if (x == "unlimited") {
+									x = 5;
+									var count = true;
+								}else if (x == "hours3") {
+									var hours3 = document.getElementById("hours3");
+									x = hours3.value;
+									count = true;
+								}else if (x == 'hour'){
+									x = 1;
+									var count = true;
+								}else if (x == 'half'){
+									x = 0.5;
+									var count = true;
+								}else if (x == 0){
+									var count = true;
+								}else {
+								 x = localxpsthree;
+								 var count = true;
+							 }
 
-												function timerecordpstwo(){
-														var t = new Date();
-														var h = t.getHours();
-														var m = t.getMinutes();
-														var s = t.getSeconds();
-														var message = "PS Two Started at" +" "+( h % 12 || 12 )+ " : " +m;
-														document.getElementById("timepstwo").innerHTML=message;
-														$('.pstwomessage').html("");
+							var clockpsthree = new FlipClock($('.psthree-clock'),x*3600, {
+								clockFace: 'HourlyCounter',
+								autoStart: true,
+								countdown: count,
+
+								callbacks: {
+									interval: function() {
+												time = this.factory.getTime().time;
+												audio = new Audio('audio_file.mp3');
+												savedtimepsthree = time/3600;
+												if(time == 600) {
+													$('.psthreemessage').html('10 Minutes left');
+													audio.play();
+												}else if (time == 0) {
+													audio.play();
 												}
+											},
 
-												function resetpstwo() {
-													//localStorage.removeItem("localxpstwo");
-													savedtimepstwo = 0;
-													location.reload();
-												}
-
-
-
-
-												function savexpstwo() {
-													localStorage.localxpstwo = savedtimepstwo;
-												}
-			// **************************** PS Three ********************************* //
-									var localxpsthree = parseFloat(localStorage.localxpsthree);
-
-									function clockstartpsthree(x) {
-											if (x == "unlimited") {
-												x = 5;
-												var count = true;
-											}else if (x == "hours1") {
-												var hours1 = document.getElementById("hours3");
-												x = hours3.value;
-												count = true;
-											}else if (x == 'hour'){
-												x = 1;
-												var count = true;
-											}else if (x == 'half'){
-												x = 0.5;
-												var count = true;
-											}else {
-												x = localxpsthree;
-												var count = true;
+								 stop: function() {
+								 			var t = new Date();
+											var h = t.getHours();
+											var m = t.getMinutes();
+											var s = t.getSeconds();
+											$('.psthreemessage').html("PS Three Finished at" +" "+( h % 12 || 12 )+ " : " +m);
 											}
+										}
+									})};
 
+									function timerecordpsthree(){
+											var t = new Date();
+											var h = t.getHours();
+											var m = t.getMinutes();
+											var s = t.getSeconds();
+											var message = "PS Three Started at" +" "+( h % 12 || 12 )+ " : " +m;
+											document.getElementById("timepsthree").innerHTML=message;
+											$('.psthreemessage').html("");
+									}
 
-										var clock = new FlipClock($('.psthree-clock'),x*3600, {
-											// ... your options here
-											clockFace: 'HourlyCounter',
-											autoStart: true,
-											countdown: count,
+									function resetpsthree() {
+										localStorage.localxpsthree = 0;
+										clearInterval(psthreeinterval);
+										clockstartpsthree(0);
+										$('.psthreemessage').html("Counter has been reset");
+									}
 
-											callbacks: {
-												interval: function() {
-															var time = this.factory.getTime().time;
-															var audio = new Audio('audio_file.mp3');
-															savedtimepsthree = time/3600;
-															if(time == 600) {
-																$('.pstheermessage').html('10 Minutes left');
+									var psthreeinterval = window.setInterval(savepsthreeinterval, 3000);
+									function savepsthreeinterval() {
+										localStorage.localxpsthree = savedtimepsthree;
+									}
 
-																audio.play();
-															}else if (time == 0) {
-																audio.play();
-															}
-														},
-														stop: function() {
-															var t = new Date();
-															var h = t.getHours();
-															var m = t.getMinutes();
-															var s = t.getSeconds();
-															$('.psthreemessage').html("PS Three Finished at" +" "+( h % 12 || 12 )+ " : " +m);
-														}
-													}
-												})};
+// **************************** PS Four ********************************* //
 
-												function timerecordpsthree(){
-														var t = new Date();
-														var h = t.getHours();
-														var m = t.getMinutes();
-														var s = t.getSeconds();
-														var message = "PS Three Started at" +" "+( h % 12 || 12 )+ " : " +m;
-														document.getElementById("timepsthree").innerHTML=message;
-														$('.psthreemessage').html("");
+						var localxpsfour = parseFloat(localStorage.localxpsfour);
+
+						function clockstartpsfour(x) {
+								if (x == "unlimited") {
+									x = 5;
+									var count = true;
+								}else if (x == "hours4") {
+									var hours4 = document.getElementById("hours4");
+									x = hours4.value;
+									count = true;
+								}else if (x == 'hour'){
+									x = 1;
+									var count = true;
+								}else if (x == 'half'){
+									x = 0.5;
+									var count = true;
+								}else if (x == 0){
+									var count = true;
+								}else {
+								 x = localxpsfour;
+								 var count = true;
+							 }
+
+							var clockpsfour = new FlipClock($('.psfour-clock'),x*3600, {
+								clockFace: 'HourlyCounter',
+								autoStart: true,
+								countdown: count,
+
+								callbacks: {
+									interval: function() {
+												time = this.factory.getTime().time;
+												audio = new Audio('audio_file.mp3');
+												savedtimepsfour = time/3600;
+												if(time == 600) {
+													$('.psfourmessage').html('10 Minutes left');
+													audio.play();
+												}else if (time == 0) {
+													audio.play();
 												}
+											},
 
-												function resetpsthree() {
-													//localStorage.removeItem("localxpsthree");
-													savedtimepsthree = 0;
-													location.reload();
-												}
-
-
-
-												function savexpsthree() {
-													localStorage.localxpsthree = savedtimepsthree;
-												}
-			// **************************** PS Four ********************************* //
-
-									var localxpsfour = parseFloat(localStorage.localxpsfour);
-
-									function clockstartpsfour(x) {
-										console.log(x);
-											if (x == "unlimited") {
-												x = 5;
-												var count = true;
-											}else if (x == "hours4") {
-												var hours1 = document.getElementById("hours4");
-												x = hours4.value;
-												count = true;
-											}else if (x == 'hour'){
-												x = 1;
-												var count = true;
-											}else if (x == 'half'){
-												x = 0.5;
-												var count = true;
-											}else {
-												x = localxpsfour;
-												var count = true;
+								 stop: function() {
+								 			var t = new Date();
+											var h = t.getHours();
+											var m = t.getMinutes();
+											var s = t.getSeconds();
+											$('.psfourmessage').html("PS Four Finished at" +" "+( h % 12 || 12 )+ " : " +m);
 											}
+										}
+									})};
 
+									function timerecordpsfour(){
+											var t = new Date();
+											var h = t.getHours();
+											var m = t.getMinutes();
+											var s = t.getSeconds();
+											var message = "PS Four Started at" +" "+( h % 12 || 12 )+ " : " +m;
+											document.getElementById("timepsfour").innerHTML=message;
+											$('.psfourmessage').html("");
+									}
 
-										var clock = new FlipClock($('.psfour-clock'),x*3600, {
-											// ... your options here
-											clockFace: 'HourlyCounter',
-											autoStart: true,
-											countdown: count,
+									function resetpsfour() {
+										localStorage.localxpsfour = 0;
+										clearInterval(psfourinterval);
+										clockstartpsfour(0);
+										$('.psfourmessage').html("Counter has been reset");
+									}
 
-											callbacks: {
-												interval: function() {
-															var time = this.factory.getTime().time;
-															var audio = new Audio('audio_file.mp3');
-															savedtimepsfour = time/3600;
-															if(time == 600) {
-																$('.psfourmessage').html('10 Minutes left');
+									var psfourinterval = window.setInterval(savepsfourinterval, 3000);
+									function savepsfourinterval() {
+										localStorage.localxpsfour = savedtimepsfour;
+									}
+// **************************** Billard ********************************* //
 
-																audio.play();
-															}else if (time == 0) {
-																audio.play();
-															}
-														},
-														stop: function() {
-															var t = new Date();
-															var h = t.getHours();
-															var m = t.getMinutes();
-															var s = t.getSeconds();
-															$('.psfourmessage').html("PS Four Finished at" +" "+( h % 12 || 12 )+ " : " +m);
-														}
-													}
-												})};
+						var localxbillard = parseFloat(localStorage.localxbillard);
 
-												function timerecordpsfour(){
-														var t = new Date();
-														var h = t.getHours();
-														var m = t.getMinutes();
-														var s = t.getSeconds();
-														var message = "PS Four Started at" +" "+( h % 12 || 12 )+ " : " +m;
-														document.getElementById("timepsfour").innerHTML=message;
-														$('.psfourmessage').html("");
+						function clockstartbillard(x) {
+								if (x == "unlimited") {
+									x = 5;
+									var count = true;
+								}else if (x == "hours4") {
+									var hoursbillard = document.getElementById("hoursbillard");
+									x = hoursbillard.value;
+									count = true;
+								}else if (x == 'hour'){
+									x = 1;
+									var count = true;
+								}else if (x == 'half'){
+									x = 0.5;
+									var count = true;
+								}else if (x == 0){
+									var count = true;
+								}else {
+								 x = localxbillard;
+								 var count = true;
+							 }
+
+							var clockbillard = new FlipClock($('.billard-clock'),x*3600, {
+								clockFace: 'HourlyCounter',
+								autoStart: true,
+								countdown: count,
+
+								callbacks: {
+									interval: function() {
+												time = this.factory.getTime().time;
+												audio = new Audio('audio_file.mp3');
+												savedtimebillard = time/3600;
+												if(time == 600) {
+													$('.billardmessage').html('10 Minutes left');
+													audio.play();
+												}else if (time == 0) {
+													audio.play();
 												}
+											},
 
-												function resetpsfour() {
-													//localStorage.removeItem("localxpsfour");
-													savedtimepsfour = 0;
-													location.reload();
-												}
-
-
-
-
-												function savexpsfour() {
-													localStorage.localxpsfour = savedtimepsfour;
-												}
-			// **************************** Billard ********************************* //
-									var localxbillard = parseFloat(localStorage.localxbillard);
-
-									function clockstartbillard(x) {
-											if (x == "unlimited") {
-												x = 5;
-												var count = true;
-											}else if (x == "hoursbillard") {
-												var hours1 = document.getElementById("hoursbillard");
-												x = hoursbillard.value;
-												count = true;
-											}else if (x == 'hour'){
-												x = 1;
-												var count = true;
-											}else if (x == 'half'){
-												x = 0.5;
-												var count = true;
-											}else {
-												x = localxbillard;
-												var count = true;
+								 stop: function() {
+								 			var t = new Date();
+											var h = t.getHours();
+											var m = t.getMinutes();
+											var s = t.getSeconds();
+											$('.billardmessage').html("Billard Finished at" +" "+( h % 12 || 12 )+ " : " +m);
 											}
+										}
+									})};
 
+									function timerecordbillard(){
+											var t = new Date();
+											var h = t.getHours();
+											var m = t.getMinutes();
+											var s = t.getSeconds();
+											var message = "Billard Started at" +" "+( h % 12 || 12 )+ " : " +m;
+											document.getElementById("timebillard").innerHTML=message;
+											$('.billardmessage').html("");
+									}
 
-										var clock = new FlipClock($('.billard-clock'),x*3600, {
-											// ... your options here
-											clockFace: 'HourlyCounter',
-											autoStart: true,
-											countdown: count,
+									function resetbillard() {
+										localStorage.localxbillard = 0;
+										clearInterval(billardinterval);
+										clockstartbillard(0);
+										$('.billardmessage').html("Counter has been reset");
+									}
 
-											callbacks: {
-												interval: function() {
-															var time = this.factory.getTime().time;
-															var audio = new Audio('audio_file.mp3');
-															savedtimebillard = time/3600;
-															if(time == 600) {
-																$('.billardemessage').html('10 Minutes left');
-
-																audio.play();
-															}else if (time == 0) {
-																audio.play();
-															}
-														},
-														stop: function() {
-															var t = new Date();
-															var h = t.getHours();
-															var m = t.getMinutes();
-															var s = t.getSeconds();
-															$('.billardmessage').html("Billard Finished at" +" "+( h % 12 || 12 )+ " : " +m);
-														}
-													}
-												})};
-
-												function timerecordbillard(){
-														var t = new Date();
-														var h = t.getHours();
-														var m = t.getMinutes();
-														var s = t.getSeconds();
-														var message = "Billard Started at" +" "+( h % 12 || 12 )+ " : " +m;
-														document.getElementById("timebillard").innerHTML=message;
-														$('.billardmessage').html("");
-												}
-
-												function resetbillard() {
-													//localStorage.removeItem("localxbillard");
-													savedtimebillard = 0;
-													location.reload();
-												}
-
-
-
-
-												function savexbillard() {
-													localStorage.localxbillard = savedtimebillard;
-												}
-
-				    window.onbeforeunload = confirmExit;
-				        function confirmExit() {
-				          return "You have attempted to leave this page. Are you sure?";
-				    }
-
-    </script>
+									var billardinterval = window.setInterval(savebillardinterval, 3000);
+									function savebillardinterval() {
+										localStorage.localxbillard = savedtimebillard;
+									}
+			</script>
 	</body>
 </html>
