@@ -15,15 +15,19 @@
 
 
 <div class="psone-clock-container">
-	<h3>PlayStation One</h3>
+	<h3>PlayStation 1</h3>
 				<div class="psone-clock"></div>
 				<form class="pure-form">
 
-						<input type="button" class="button-small button-secondary pure-button" value="30 Mins" onclick="clockstartpsone('half'); timerecordpsone();" />
-						<input type="button" class="button-small button-success pure-button" value="60 Mins" onclick="clockstartpsone('hour'); timerecordpsone();" />
-						<input type="button" class="button-small button-error pure-button" value="Open" onclick="clockstartpsone('unlimited'); timerecordpsone();" />
+						<input type="button" class="button-small button-secondary pure-button" value="30 Mins" onclick="clockstartpsone('half'); timerecordpsone('30 Minutes');" />
+						<input type="button" class="button-small button-success pure-button" value="60 Mins" onclick="clockstartpsone('hour'); timerecordpsone('One Hour');" />
+						<input type="button" class="button-small button-error pure-button" value="Open" onclick="clockstartpsone('unlimited'); timerecordpsone('Unlimited');" />
 						<input id="hours1" type="text" class="pure-input" placeholder="hours" />
-						<input type="button" class="button-small pure-button-primary pure-button" value="GO!" onclick="clockstartpsone('hours1'); timerecordpsone();" />
+						<input type="button" class="button-small pure-button-primary pure-button" value="GO!" onclick="clockstartpsone('hours1'); timerecordpsone('hours1');" />
+
+
+						<input id="addtime1" type="text" class="pure-input" placeholder="addtime" />
+						<input type="button" class="button-small pure-button-primary pure-button" value="ADD!" onclick="clockstartpsone('addtime1'); timerecordpsone('addtime1');" />
 
 						<fieldset class="pure-group">
 							<h4>Notes : </h4>
@@ -32,11 +36,16 @@
 
 						<div class="events">
 							<h4>Events : </h4>
-							<p id="timepsone"></p>
-							<p class="psonemessage"></p>
+							<p id="psoneStartMessage"></p>
+							<p id="psoneAddtimeMessage"></p>
+							<p id="psoneEndMessage"></p>
+							<p id="psoneResetMessage"></p>
+
 						</div>
+
 						<input type="button" class="button-small button-warning pure-button" value="Reset!" onclick="resetpsone();" />
 				</form>
+
 
 
 
@@ -45,43 +54,22 @@
 
 <!--**************************PS Two*************************-->
 
+
+
 <div class="pstwo-clock-container">
-<h3>PlayStation Two</h3>
+	<h3>PlayStation 2</h3>
 				<div class="pstwo-clock"></div>
 				<form class="pure-form">
-						<input type="button" class="button-small button-secondary pure-button" value="30 Mins" onclick="clockstartpstwo('half'); timerecordpstwo();" />
-						<input type="button" class="button-small button-success pure-button" value="60 Mins" onclick="clockstartpstwo('hour'); timerecordpstwo();" />
-						<input type="button" class="button-small button-error pure-button" value="Open" onclick="clockstartpstwo('unlimited'); timerecordpstwo();" />
+
+						<input type="button" class="button-small button-secondary pure-button" value="30 Mins" onclick="clockstartpstwo('half'); timerecordpstwo('30 Minutes');" />
+						<input type="button" class="button-small button-success pure-button" value="60 Mins" onclick="clockstartpstwo('hour'); timerecordpstwo('One Hour');" />
+						<input type="button" class="button-small button-error pure-button" value="Open" onclick="clockstartpstwo('unlimited'); timerecordpstwo('Unlimited');" />
 						<input id="hours2" type="text" class="pure-input" placeholder="hours" />
-						<input type="button" class="button-small pure-button-primary pure-button" value="GO!" onclick="clockstartpstwo('hours2'); timerecordpstwo();" />
-
-						<fieldset class="pure-group">
-							<h4>Notes : </h4>
-							<textarea class="pure-input-1" placeholder="Textareas work too"></textarea>
-						</fieldset>
-
-										<div class="events">
-											<h4>Events : </h4>
-											<p id="timepstwo"></p>
-											<p class="pstwomessage"></p>
-										</div>
-										<input type="button" class="button-small button-warning pure-button" value="Reset!" onclick="resetpstwo();" />
-				</form>
-
-</div>
+						<input type="button" class="button-small pure-button-primary pure-button" value="GO!" onclick="clockstartpstwo('hours2'); timerecordpstwo('hours2');" />
 
 
-<!--**************************PS Three*************************-->
-
-<div class="psthree-clock-container">
-<h3>PlayStation Three</h3>
-				<div class="psthree-clock"></div>
-				<form class="pure-form">
-						<input type="button" class="button-small button-secondary pure-button" value="30 Mins" onclick="clockstartpsthree('half'); timerecordpsthree();" />
-						<input type="button" class="button-small button-success pure-button" value="60 Mins" onclick="clockstartpsthree('hour'); timerecordpsthree();" />
-						<input type="button" class="button-small button-error pure-button" value="Open" onclick="clockstartpsthree('unlimited'); timerecordpsthree();" />
-						<input id="hours3" type="text" class="pure-input" placeholder="hours" />
-						<input type="button" class="button-small pure-button-primary pure-button" value="GO!" onclick="clockstartpsthree('hours3'); timerecordpsthree();" />
+						<input id="addtime2" type="text" class="pure-input" placeholder="addtime" />
+						<input type="button" class="button-small pure-button-primary pure-button" value="ADD!" onclick="clockstartpstwo('addtime2'); timerecordpstwo('addtime2');" />
 
 						<fieldset class="pure-group">
 							<h4>Notes : </h4>
@@ -90,11 +78,59 @@
 
 						<div class="events">
 							<h4>Events : </h4>
-							<p id="timepsthree"></p>
-							<p class="psthreemessage"></p>
+							<p id="pstwoStartMessage"></p>
+							<p id="pstwoAddtimeMessage"></p>
+							<p id="pstwoEndMessage"></p>
+							<p id="pstwoResetMessage"></p>
+
 						</div>
+
+						<input type="button" class="button-small button-warning pure-button" value="Reset!" onclick="resetpstwo();" />
+				</form>
+
+
+
+
+</div>
+
+
+<!--**************************PS Three*************************-->
+
+
+
+<div class="psthree-clock-container">
+	<h3>PlayStation 3</h3>
+				<div class="psthree-clock"></div>
+				<form class="pure-form">
+
+						<input type="button" class="button-small button-secondary pure-button" value="30 Mins" onclick="clockstartpsthree('half'); timerecordpsthree('30 Minutes');" />
+						<input type="button" class="button-small button-success pure-button" value="60 Mins" onclick="clockstartpsthree('hour'); timerecordpsthree('One Hour');" />
+						<input type="button" class="button-small button-error pure-button" value="Open" onclick="clockstartpsthree('unlimited'); timerecordpsthree('Unlimited');" />
+						<input id="hours3" type="text" class="pure-input" placeholder="hours" />
+						<input type="button" class="button-small pure-button-primary pure-button" value="GO!" onclick="clockstartpsthree('hours3'); timerecordpsthree('hours3');" />
+
+
+						<input id="addtime3" type="text" class="pure-input" placeholder="addtime" />
+						<input type="button" class="button-small pure-button-primary pure-button" value="ADD!" onclick="clockstartpsthree('addtime3'); timerecordpsthree('addtime3');" />
+
+						<fieldset class="pure-group">
+							<h4>Notes : </h4>
+							<textarea class="pure-input-1" placeholder="Textareas work too"></textarea>
+						</fieldset>
+
+						<div class="events">
+							<h4>Events : </h4>
+							<p id="psthreeStartMessage"></p>
+							<p id="psthreeAddtimeMessage"></p>
+							<p id="psthreeEndMessage"></p>
+							<p id="psthreeResetMessage"></p>
+
+						</div>
+
 						<input type="button" class="button-small button-warning pure-button" value="Reset!" onclick="resetpsthree();" />
 				</form>
+
+
 
 
 </div>
@@ -103,27 +139,39 @@
 <!--**************************PS Four*************************-->
 
 <div class="psfour-clock-container">
-<h3>PlayStation Four</h3>
+	<h3>PlayStation 4</h3>
 				<div class="psfour-clock"></div>
 				<form class="pure-form">
-						<input type="button" class="button-small button-secondary pure-button" value="30 Mins" onclick="clockstartpsfour('half'); timerecordpsfour();" />
-						<input type="button" class="button-small button-success pure-button" value="60 Mins" onclick="clockstartpsfour('hour'); timerecordpsfour();" />
-						<input type="button" class="button-small button-error pure-button" value="Open" onclick="clockstartpsfour('unlimited'); timerecordpsfour();" />
+
+						<input type="button" class="button-small button-secondary pure-button" value="30 Mins" onclick="clockstartpsfour('half'); timerecordpsfour('30 Minutes');" />
+						<input type="button" class="button-small button-success pure-button" value="60 Mins" onclick="clockstartpsfour('hour'); timerecordpsfour('One Hour');" />
+						<input type="button" class="button-small button-error pure-button" value="Open" onclick="clockstartpsfour('unlimited'); timerecordpsfour('Unlimited');" />
 						<input id="hours4" type="text" class="pure-input" placeholder="hours" />
-						<input type="button" class="button-small pure-button-primary pure-button" value="GO!" onclick="clockstartpsfour('hours4'); timerecordpsfour();" />
+						<input type="button" class="button-small pure-button-primary pure-button" value="GO!" onclick="clockstartpsfour('hours4'); timerecordpsfour('hours4');" />
+
+
+						<input id="addtime4" type="text" class="pure-input" placeholder="addtime" />
+						<input type="button" class="button-small pure-button-primary pure-button" value="ADD!" onclick="clockstartpsfour('addtime4'); timerecordpsfour('addtime4');" />
 
 						<fieldset class="pure-group">
 							<h4>Notes : </h4>
 							<textarea class="pure-input-1" placeholder="Textareas work too"></textarea>
 						</fieldset>
 
-										<div class="events">
-											<h4>Events : </h4>
-											<p id="timepsfour"></p>
-											<p class="psfourmessage"></p>
-										</div>
-										<input type="button" class="button-small button-warning pure-button" value="Reset!" onclick="resetpsfour();" />
+						<div class="events">
+							<h4>Events : </h4>
+							<p id="psfourStartMessage"></p>
+							<p id="psfourAddtimeMessage"></p>
+							<p id="psfourEndMessage"></p>
+							<p id="psfourResetMessage"></p>
+
+						</div>
+
+						<input type="button" class="button-small button-warning pure-button" value="Reset!" onclick="resetpsfour();" />
 				</form>
+
+
+
 
 </div>
 
@@ -131,33 +179,43 @@
 <!--**************************Billard*************************-->
 
 <div class="billard-clock-container">
-<h3>Billard</h3>
+	<h3>Billard</h3>
 				<div class="billard-clock"></div>
 				<form class="pure-form">
-						<input type="button" class="button-small button-secondary pure-button" value="30 Mins" onclick="clockstartbillard('half'); timerecordbillard();" />
-						<input type="button" class="button-small button-success pure-button" value="60 Mins" onclick="clockstartbillard('hour'); timerecordbillard();" />
-						<input type="button" class="button-small button-error pure-button" value="Open" onclick="clockstartbillard('unlimited'); timerecordbillard();" />
+
+						<input type="button" class="button-small button-secondary pure-button" value="30 Mins" onclick="clockstartbillard('half'); timerecordbillard('30 Minutes');" />
+						<input type="button" class="button-small button-success pure-button" value="60 Mins" onclick="clockstartbillard('hour'); timerecordbillard('One Hour');" />
+						<input type="button" class="button-small button-error pure-button" value="Open" onclick="clockstartbillard('unlimited'); timerecordbillard('Unlimited');" />
 						<input id="hoursbillard" type="text" class="pure-input" placeholder="hours" />
-						<input type="button" class="button-small pure-button-primary pure-button" value="GO!" onclick="clockstartbillard('hoursbillard'); timerecordbillard();" />
+						<input type="button" class="button-small pure-button-primary pure-button" value="GO!" onclick="clockstartbillard('hoursbillard'); timerecordbillard('hoursbillard');" />
+
+
+						<input id="addtimebillard" type="text" class="pure-input" placeholder="addtime" />
+						<input type="button" class="button-small pure-button-primary pure-button" value="ADD!" onclick="clockstartbillard('addtimebillard'); timerecordbillard('addtimebillard');" />
 
 						<fieldset class="pure-group">
 							<h4>Notes : </h4>
 							<textarea class="pure-input-1" placeholder="Textareas work too"></textarea>
 						</fieldset>
 
-										<div class="events">
-											<h4>Events : </h4>
-											<p id="timebillard"></p>
-											<p class="billardmessage"></p>
-										</div>
-										<input type="button" class="button-small button-warning pure-button" value="Reset!" onclick="resetbillard();" />
-				</form>
+						<div class="events">
+							<h4>Events : </h4>
+							<p id="billardStartMessage"></p>
+							<p id="billardAddtimeMessage"></p>
+							<p id="billardEndMessage"></p>
+							<p id="billardResetMessage"></p>
 
+						</div>
+
+						<input type="button" class="button-small button-warning pure-button" value="Reset!" onclick="resetbillard();" />
+				</form>
 </div>
 
 <script type="text/javascript">
 
 		// **************************** Checking and setting local storage and global variables for the first time ********************************* //
+
+
 					//localStorage.clear();
 
 						// Deploy the counters
@@ -170,14 +228,23 @@
 							}
 
 						// Set global variables
-						var savedtimepsone, savedtimepstwo, savedtimepsthree, savedtimepsfour, savedtimebillard,audio, time;
+						var savedtimepsone, savedtimepstwo, savedtimepsthree, savedtimepsfour, savedtimebillard, audio, time;
 		// **************************** Launching the counters with default value = localxs ********************************* //
 
 		// **************************** PS One *********************************
 
-						var localxpsone = parseFloat(localStorage.localxpsone);
+							if (localStorage.localPsoneResetMessage == 1) {
+									document.getElementById("psoneResetMessage").innerHTML = "Counter has been RESET!";
+							}
 
+							document.getElementById("psoneStartMessage").innerHTML = localStorage.localPsoneStartMessage;
+							document.getElementById("psoneAddtimeMessage").innerHTML = localStorage.localPsoneAddedtime;
+							document.getElementById("psoneEndMessage").innerHTML = localStorage.localPsoneEndMessage;
+
+
+						var localxpsone = parseFloat(localStorage.localxpsone);
 						function clockstartpsone(x) {
+
 								if (x == "unlimited") {
 									x = 5;
 									var count = true;
@@ -185,6 +252,21 @@
 									var hours1 = document.getElementById("hours1");
 									x = hours1.value;
 									count = true;
+								}else if (x == 'addtime1'){
+									localxpsone = localStorage.localxpsone;
+									var addtime1 = document.getElementById("addtime1");
+
+										  x =  parseFloat(addtime1.value);
+											if (x == 0) {
+												x = 0.5
+											}else {
+												x = x;
+											}
+									x = x + (parseFloat(localxpsone));
+
+									var count = true;
+									location.reload();
+
 								}else if (x == 'hour'){
 									x = 1;
 									var count = true;
@@ -208,8 +290,10 @@
 												time = this.factory.getTime().time;
 												audio = new Audio('audio_file.mp3');
 												savedtimepsone = time/3600;
+
 												if(time == 600) {
-													$('.psonemessage').html('10 Minutes left');
+													localStorage.localPsoneEndMessage = " 10 Minutes Left!"
+													document.getElementById("psoneEndMessage").innerHTML = localStorage.localPsoneEndMessage;
 													audio.play();
 												}else if (time == 0) {
 													audio.play();
@@ -221,40 +305,82 @@
 											var h = t.getHours();
 											var m = t.getMinutes();
 											var s = t.getSeconds();
-											$('.psonemessage').html("PS One Finished at" +" "+( h % 12 || 12 )+ " : " +m);
+											var stopmessage = "PS One Finished at "+( h % 12 || 12 )+ ":" +m;
+											localStorage.localPsoneEndMessage = stopmessage;
+											document.getElementById("psoneEndMessage").innerHTML = stopmessage;
 											}
 										}
 									})};
 
-									function timerecordpsone(){
-											var t = new Date();
-											var h = t.getHours();
-											var m = t.getMinutes();
-											var s = t.getSeconds();
-											var message = "PS One Started at" +" "+( h % 12 || 12 )+ " : " +m;
-											document.getElementById("timepsone").innerHTML=message;
-											//$('.psonemessage').html("");
-									}
+									function timerecordpsone(x){
 
-									function resetpsone() {
-										localStorage.localxpsone = 0;
-										clearInterval(psoneinterval);
-										clockstartpsone(0);
-										$('.psonemessage').html("Counter has been reset");
-									}
+										var t = new Date();
+										var h = t.getHours();
+										var m = t.getMinutes();
+										var s = t.getSeconds();
+
+											if (x == 'hours1') {
+													x = hours1.value;
+											}
+
+											if (x == "addtime1") {
+												localStorage.localPsoneAddedtime = "";
+												localStorage.localPsoneEndMessage = "";
+												localStorage.localxpsone = savedtimepsone;
+												var addtime1 = document.getElementById("addtime1");
+												x = addtime1.value;
+												var psoneAddtimeMessage = "PS One Added " + x +" at "+( h % 12 || 12 )+ ":" +m;
+												document.getElementById("psoneAddtimeMessage").innerHTML = psoneAddtimeMessage;
+												localStorage.localPsoneAddedtime = psoneAddtimeMessage;
+												document.getElementById("psoneEndMessage").innerHTML = localStorage.localPsoneEndMessage;
+
+											}else {
+													localStorage.localPsoneAddedtime = "";
+													localStorage.localPsoneEndMessage = "";
+													document.getElementById("psoneEndMessage").innerHTML = "";
+													var message = "PS One Started " + x +" at "+( h % 12 || 12 )+ ":" +m;
+													localStorage.localPsoneStartMessage = message;
+													document.getElementById("psoneStartMessage").innerHTML = message;
+													document.getElementById("psoneAddtimeMessage").innerHTML = "";
+													localStorage.localPsoneResetMessage = 0;
+													document.getElementById("psoneResetMessage").innerHTML = "";
+											}
+
+
+										}
+
+
+										function resetpsone() {
+													localStorage.localxpsone = 0;
+													localStorage.localPsoneAddedtime = "";
+													localStorage.localPsoneStartMessage = "";
+													localStorage.localPsoneEndMessage = "";
+													localStorage.localPsoneResetMessage = 1;
+													clearInterval(psoneinterval);
+													clockstartpsone(0);
+													location.reload();
+										}
 
 									var psoneinterval = window.setInterval(savepsoneinterval, 3000);
 									function savepsoneinterval() {
+
 										localStorage.localxpsone = savedtimepsone;
 									}
 
-
-
 // **************************** PS Two ********************************* //
 
-						var localxpstwo = parseFloat(localStorage.localxpstwo);
+							if (localStorage.localPstwoResetMessage == 1) {
+									document.getElementById("pstwoResetMessage").innerHTML = "Counter has been RESET!";
+							}
 
+							document.getElementById("pstwoStartMessage").innerHTML = localStorage.localPstwoStartMessage;
+							document.getElementById("pstwoAddtimeMessage").innerHTML = localStorage.localPstwoAddedtime;
+							document.getElementById("pstwoEndMessage").innerHTML = localStorage.localPstwoEndMessage;
+
+
+						var localxpstwo = parseFloat(localStorage.localxpstwo);
 						function clockstartpstwo(x) {
+
 								if (x == "unlimited") {
 									x = 5;
 									var count = true;
@@ -262,6 +388,21 @@
 									var hours2 = document.getElementById("hours2");
 									x = hours2.value;
 									count = true;
+								}else if (x == 'addtime2'){
+									localxpsone = localStorage.localxpstwo;
+									var addtime2 = document.getElementById("addtime2");
+
+										  x =  parseFloat(addtime2.value);
+											if (x == 0) {
+												x = 0.5
+											}else {
+												x = x;
+											}
+									x = x + (parseFloat(localxpstwo));
+
+									var count = true;
+									location.reload();
+
 								}else if (x == 'hour'){
 									x = 1;
 									var count = true;
@@ -285,8 +426,10 @@
 												time = this.factory.getTime().time;
 												audio = new Audio('audio_file.mp3');
 												savedtimepstwo = time/3600;
+
 												if(time == 600) {
-													$('.pstwomessage').html('10 Minutes left');
+													localStorage.localPstwoEndMessage = " 10 Minutes Left!"
+													document.getElementById("pstwoEndMessage").innerHTML = localStorage.localPstwoEndMessage;
 													audio.play();
 												}else if (time == 0) {
 													audio.play();
@@ -298,39 +441,82 @@
 											var h = t.getHours();
 											var m = t.getMinutes();
 											var s = t.getSeconds();
-											$('.pstwomessage').html("PS Two Finished at" +" "+( h % 12 || 12 )+ " : " +m);
+											var stopmessage = "PS Two Finished at "+( h % 12 || 12 )+ ":" +m;
+											localStorage.localPstwoEndMessage = stopmessage;
+											document.getElementById("pstwoEndMessage").innerHTML = stopmessage;
 											}
 										}
 									})};
 
-									function timerecordpstwo(){
-											var t = new Date();
-											var h = t.getHours();
-											var m = t.getMinutes();
-											var s = t.getSeconds();
-											var message = "PS Two Started at" +" "+( h % 12 || 12 )+ " : " +m;
-											document.getElementById("timepstwo").innerHTML=message;
-											$('.pstwomessage').html("");
-									}
+									function timerecordpstwo(x){
 
-									function resetpstwo() {
-										localStorage.localxpstwo = 0;
-										clearInterval(pstwointerval);
-										clockstartpstwo(0);
-										$('.pstwomessage').html("Counter has been reset");
-									}
+										var t = new Date();
+										var h = t.getHours();
+										var m = t.getMinutes();
+										var s = t.getSeconds();
+
+											if (x == 'hours2') {
+													x = hours2.value;
+											}
+
+											if (x == "addtime2") {
+												localStorage.localPstwoAddedtime = "";
+												localStorage.localPstwoEndMessage = "";
+												localStorage.localxpstwo = savedtimepstwo;
+												var addtime2 = document.getElementById("addtime2");
+												x = addtime2.value;
+												var pstwoAddtimeMessage = "PS Two Added " + x +" at "+( h % 12 || 12 )+ ":" +m;
+												document.getElementById("pstwoAddtimeMessage").innerHTML = pstwoAddtimeMessage;
+												localStorage.localPstwoAddedtime = pstwoAddtimeMessage;
+												document.getElementById("pstwoEndMessage").innerHTML = localStorage.localPstwoEndMessage;
+
+											}else {
+													localStorage.localPstwoAddedtime = "";
+													localStorage.localPstwoEndMessage = "";
+													document.getElementById("pstwoEndMessage").innerHTML = "";
+													var message = "PS Two Started " + x +" at "+( h % 12 || 12 )+ ":" +m;
+													localStorage.localPstwoStartMessage = message;
+													document.getElementById("pstwoStartMessage").innerHTML = message;
+													document.getElementById("pstwoAddtimeMessage").innerHTML = "";
+													localStorage.localPstwoResetMessage = 0;
+													document.getElementById("pstwoResetMessage").innerHTML = "";
+											}
+
+
+										}
+
+
+										function resetpstwo() {
+													localStorage.localxpstwo = 0;
+													localStorage.localPstwoAddedtime = "";
+													localStorage.localPstwoStartMessage = "";
+													localStorage.localPstwoEndMessage = "";
+													localStorage.localPstwoResetMessage = 1;
+													clearInterval(pstwointerval);
+													clockstartpstwo(0);
+													location.reload();
+										}
 
 									var pstwointerval = window.setInterval(savepstwointerval, 3000);
 									function savepstwointerval() {
+
 										localStorage.localxpstwo = savedtimepstwo;
 									}
 
-
 // **************************** PS Three ********************************* //
 
-						var localxpsthree = parseFloat(localStorage.localxpsthree);
+							if (localStorage.localPsthreeResetMessage == 1) {
+									document.getElementById("psthreeResetMessage").innerHTML = "Counter has been RESET!";
+							}
 
+							document.getElementById("psthreeStartMessage").innerHTML = localStorage.localPsthreeStartMessage;
+							document.getElementById("psthreeAddtimeMessage").innerHTML = localStorage.localPsthreeAddedtime;
+							document.getElementById("psthreeEndMessage").innerHTML = localStorage.localPsthreeEndMessage;
+
+
+						var localxpsthree = parseFloat(localStorage.localxpsthree);
 						function clockstartpsthree(x) {
+
 								if (x == "unlimited") {
 									x = 5;
 									var count = true;
@@ -338,6 +524,21 @@
 									var hours3 = document.getElementById("hours3");
 									x = hours3.value;
 									count = true;
+								}else if (x == 'addtime3'){
+									localxpsthree = localStorage.localxpsthree;
+									var addtime3 = document.getElementById("addtime3");
+
+										  x =  parseFloat(addtime3.value);
+											if (x == 0) {
+												x = 0.5
+											}else {
+												x = x;
+											}
+									x = x + (parseFloat(localxpsthree));
+
+									var count = true;
+									location.reload();
+
 								}else if (x == 'hour'){
 									x = 1;
 									var count = true;
@@ -361,8 +562,10 @@
 												time = this.factory.getTime().time;
 												audio = new Audio('audio_file.mp3');
 												savedtimepsthree = time/3600;
+
 												if(time == 600) {
-													$('.psthreemessage').html('10 Minutes left');
+													localStorage.localPsthreeEndMessage = " 10 Minutes Left!"
+													document.getElementById("psthreeEndMessage").innerHTML = localStorage.localPsthreeEndMessage;
 													audio.play();
 												}else if (time == 0) {
 													audio.play();
@@ -374,38 +577,82 @@
 											var h = t.getHours();
 											var m = t.getMinutes();
 											var s = t.getSeconds();
-											$('.psthreemessage').html("PS Three Finished at" +" "+( h % 12 || 12 )+ " : " +m);
+											var stopmessage = "PS Three Finished at "+( h % 12 || 12 )+ ":" +m;
+											localStorage.localPsthreeEndMessage = stopmessage;
+											document.getElementById("psthreeEndMessage").innerHTML = stopmessage;
 											}
 										}
 									})};
 
-									function timerecordpsthree(){
-											var t = new Date();
-											var h = t.getHours();
-											var m = t.getMinutes();
-											var s = t.getSeconds();
-											var message = "PS Three Started at" +" "+( h % 12 || 12 )+ " : " +m;
-											document.getElementById("timepsthree").innerHTML=message;
-											$('.psthreemessage').html("");
-									}
+									function timerecordpsthree(x){
 
-									function resetpsthree() {
-										localStorage.localxpsthree = 0;
-										clearInterval(psthreeinterval);
-										clockstartpsthree(0);
-										$('.psthreemessage').html("Counter has been reset");
-									}
+										var t = new Date();
+										var h = t.getHours();
+										var m = t.getMinutes();
+										var s = t.getSeconds();
+
+											if (x == 'hours3') {
+													x = hours3.value;
+											}
+
+											if (x == "addtime3") {
+												localStorage.localPsthreeAddedtime = "";
+												localStorage.localPsthreeEndMessage = "";
+												localStorage.localxpsthree = savedtimepsthree;
+												var addtime3 = document.getElementById("addtime3");
+												x = addtime3.value;
+												var psthreeAddtimeMessage = "PS Three Added " + x +" at "+( h % 12 || 12 )+ ":" +m;
+												document.getElementById("psthreeAddtimeMessage").innerHTML = psthreeAddtimeMessage;
+												localStorage.localPsthreeAddedtime = psthreeAddtimeMessage;
+												document.getElementById("psthreeEndMessage").innerHTML = localStorage.localPsthreeEndMessage;
+
+											}else {
+													localStorage.localPsthreeAddedtime = "";
+													localStorage.localPsthreeEndMessage = "";
+													document.getElementById("psthreeEndMessage").innerHTML = "";
+													var message = "PS Three Started " + x +" at "+( h % 12 || 12 )+ ":" +m;
+													localStorage.localPsthreeStartMessage = message;
+													document.getElementById("psthreeStartMessage").innerHTML = message;
+													document.getElementById("psthreeAddtimeMessage").innerHTML = "";
+													localStorage.localPsthreeResetMessage = 0;
+													document.getElementById("psthreeResetMessage").innerHTML = "";
+											}
+
+
+										}
+
+
+										function resetpsthree() {
+													localStorage.localxpsthree = 0;
+													localStorage.localPsthreeAddedtime = "";
+													localStorage.localPsthreeStartMessage = "";
+													localStorage.localPsthreeEndMessage = "";
+													localStorage.localPsthreeResetMessage = 1;
+													clearInterval(psthreeinterval);
+													clockstartpsthree(0);
+													location.reload();
+										}
 
 									var psthreeinterval = window.setInterval(savepsthreeinterval, 3000);
 									function savepsthreeinterval() {
+
 										localStorage.localxpsthree = savedtimepsthree;
 									}
 
 // **************************** PS Four ********************************* //
 
-						var localxpsfour = parseFloat(localStorage.localxpsfour);
+							if (localStorage.localPsfourResetMessage == 1) {
+									document.getElementById("psfourResetMessage").innerHTML = "Counter has been RESET!";
+							}
 
+							document.getElementById("psfourStartMessage").innerHTML = localStorage.localPsfourStartMessage;
+							document.getElementById("psfourAddtimeMessage").innerHTML = localStorage.localPsfourAddedtime;
+							document.getElementById("psfourEndMessage").innerHTML = localStorage.localPsfourEndMessage;
+
+
+						var localxpsfour = parseFloat(localStorage.localxpsfour);
 						function clockstartpsfour(x) {
+
 								if (x == "unlimited") {
 									x = 5;
 									var count = true;
@@ -413,6 +660,21 @@
 									var hours4 = document.getElementById("hours4");
 									x = hours4.value;
 									count = true;
+								}else if (x == 'addtime4'){
+									localxpsfour = localStorage.localxpsfour;
+									var addtime4 = document.getElementById("addtime4");
+
+										  x =  parseFloat(addtime4.value);
+											if (x == 0) {
+												x = 0.5
+											}else {
+												x = x;
+											}
+									x = x + (parseFloat(localxpsfour));
+
+									var count = true;
+									location.reload();
+
 								}else if (x == 'hour'){
 									x = 1;
 									var count = true;
@@ -436,8 +698,10 @@
 												time = this.factory.getTime().time;
 												audio = new Audio('audio_file.mp3');
 												savedtimepsfour = time/3600;
+
 												if(time == 600) {
-													$('.psfourmessage').html('10 Minutes left');
+													localStorage.localPsfourEndMessage = " 10 Minutes Left!"
+													document.getElementById("psfourEndMessage").innerHTML = localStorage.localPsfourEndMessage;
 													audio.play();
 												}else if (time == 0) {
 													audio.play();
@@ -449,44 +713,104 @@
 											var h = t.getHours();
 											var m = t.getMinutes();
 											var s = t.getSeconds();
-											$('.psfourmessage').html("PS Four Finished at" +" "+( h % 12 || 12 )+ " : " +m);
+											var stopmessage = "PS Four Finished at "+( h % 12 || 12 )+ ":" +m;
+											localStorage.localPsfourEndMessage = stopmessage;
+											document.getElementById("psfourEndMessage").innerHTML = stopmessage;
 											}
 										}
 									})};
 
-									function timerecordpsfour(){
-											var t = new Date();
-											var h = t.getHours();
-											var m = t.getMinutes();
-											var s = t.getSeconds();
-											var message = "PS Four Started at" +" "+( h % 12 || 12 )+ " : " +m;
-											document.getElementById("timepsfour").innerHTML=message;
-											$('.psfourmessage').html("");
-									}
+									function timerecordpsfour(x){
 
-									function resetpsfour() {
-										localStorage.localxpsfour = 0;
-										clearInterval(psfourinterval);
-										clockstartpsfour(0);
-										$('.psfourmessage').html("Counter has been reset");
-									}
+										var t = new Date();
+										var h = t.getHours();
+										var m = t.getMinutes();
+										var s = t.getSeconds();
+
+											if (x == 'hours4') {
+													x = hours4.value;
+											}
+
+											if (x == "addtime4") {
+												localStorage.localPsfourAddedtime = "";
+												localStorage.localPsfourEndMessage = "";
+												localStorage.localxpsfour = savedtimepsfour;
+												var addtime4 = document.getElementById("addtime4");
+												x = addtime4.value;
+												var psfourAddtimeMessage = "PS Four Added " + x +" at "+( h % 12 || 12 )+ ":" +m;
+												document.getElementById("psfourAddtimeMessage").innerHTML = psfourAddtimeMessage;
+												localStorage.localPsfourAddedtime = psfourAddtimeMessage;
+												document.getElementById("psfourEndMessage").innerHTML = localStorage.localPsfourEndMessage;
+
+											}else {
+													localStorage.localPsfourAddedtime = "";
+													localStorage.localPsfourEndMessage = "";
+													document.getElementById("psfourEndMessage").innerHTML = "";
+													var message = "PS Four Started " + x +" at "+( h % 12 || 12 )+ ":" +m;
+													localStorage.localPsfourStartMessage = message;
+													document.getElementById("psfourStartMessage").innerHTML = message;
+													document.getElementById("psfourAddtimeMessage").innerHTML = "";
+													localStorage.localPsfourResetMessage = 0;
+													document.getElementById("psfourResetMessage").innerHTML = "";
+											}
+
+
+										}
+
+
+										function resetpsfour() {
+													localStorage.localxpsfour = 0;
+													localStorage.localPsfourAddedtime = "";
+													localStorage.localPsfourStartMessage = "";
+													localStorage.localPsfourEndMessage = "";
+													localStorage.localPsfourResetMessage = 1;
+													clearInterval(psfourinterval);
+													clockstartpsfour(0);
+													location.reload();
+										}
 
 									var psfourinterval = window.setInterval(savepsfourinterval, 3000);
 									function savepsfourinterval() {
+
 										localStorage.localxpsfour = savedtimepsfour;
 									}
+
 // **************************** Billard ********************************* //
 
-						var localxbillard = parseFloat(localStorage.localxbillard);
+							if (localStorage.localbillardResetMessage == 1) {
+									document.getElementById("billardResetMessage").innerHTML = "Counter has been RESET!";
+							}
 
+							document.getElementById("billardStartMessage").innerHTML = localStorage.localbillardStartMessage;
+							document.getElementById("billardAddtimeMessage").innerHTML = localStorage.localbillardAddedtime;
+							document.getElementById("billardEndMessage").innerHTML = localStorage.localbillardEndMessage;
+
+
+						var localxbillard = parseFloat(localStorage.localxbillard);
 						function clockstartbillard(x) {
+
 								if (x == "unlimited") {
 									x = 5;
 									var count = true;
-								}else if (x == "hours4") {
+								}else if (x == "hoursbillard") {
 									var hoursbillard = document.getElementById("hoursbillard");
 									x = hoursbillard.value;
 									count = true;
+								}else if (x == 'addtimebillard'){
+									localxbillard = localStorage.localxbillard;
+									var addtimebillard = document.getElementById("addtimebillard");
+
+										  x =  parseFloat(addtimebillard.value);
+											if (x == 0) {
+												x = 0.5
+											}else {
+												x = x;
+											}
+									x = x + (parseFloat(localxbillard));
+
+									var count = true;
+									location.reload();
+
 								}else if (x == 'hour'){
 									x = 1;
 									var count = true;
@@ -510,8 +834,10 @@
 												time = this.factory.getTime().time;
 												audio = new Audio('audio_file.mp3');
 												savedtimebillard = time/3600;
+
 												if(time == 600) {
-													$('.billardmessage').html('10 Minutes left');
+													localStorage.localbillardEndMessage = " 10 Minutes Left!"
+													document.getElementById("billardEndMessage").innerHTML = localStorage.localbillardEndMessage;
 													audio.play();
 												}else if (time == 0) {
 													audio.play();
@@ -523,32 +849,68 @@
 											var h = t.getHours();
 											var m = t.getMinutes();
 											var s = t.getSeconds();
-											$('.billardmessage').html("Billard Finished at" +" "+( h % 12 || 12 )+ " : " +m);
+											var stopmessage = "Billard Finished at "+( h % 12 || 12 )+ ":" +m;
+											localStorage.localbillardEndMessage = stopmessage;
+											document.getElementById("billardEndMessage").innerHTML = stopmessage;
 											}
 										}
 									})};
 
-									function timerecordbillard(){
-											var t = new Date();
-											var h = t.getHours();
-											var m = t.getMinutes();
-											var s = t.getSeconds();
-											var message = "Billard Started at" +" "+( h % 12 || 12 )+ " : " +m;
-											document.getElementById("timebillard").innerHTML=message;
-											$('.billardmessage').html("");
-									}
+									function timerecordbillard(x){
 
-									function resetbillard() {
-										localStorage.localxbillard = 0;
-										clearInterval(billardinterval);
-										clockstartbillard(0);
-										$('.billardmessage').html("Counter has been reset");
-									}
+										var t = new Date();
+										var h = t.getHours();
+										var m = t.getMinutes();
+										var s = t.getSeconds();
+
+											if (x == 'hoursbillard') {
+													x = hoursbillard.value;
+											}
+
+											if (x == "addtimebillard") {
+												localStorage.localbillardAddedtime = "";
+												localStorage.localbillardEndMessage = "";
+												localStorage.localxbillard = savedtimebillard;
+												var addtimebillard = document.getElementById("addtimebillard");
+												x = addtimebillard.value;
+												var billardAddtimeMessage = "Billard Added " + x +" at "+( h % 12 || 12 )+ ":" +m;
+												document.getElementById("billardAddtimeMessage").innerHTML = billardAddtimeMessage;
+												localStorage.localbillardAddedtime = billardAddtimeMessage;
+												document.getElementById("billardEndMessage").innerHTML = localStorage.localbillardEndMessage;
+
+											}else {
+													localStorage.localbillardAddedtime = "";
+													localStorage.localbillardEndMessage = "";
+													document.getElementById("billardEndMessage").innerHTML = "";
+													var message = "Billard Started " + x +" at "+( h % 12 || 12 )+ ":" +m;
+													localStorage.localbillardStartMessage = message;
+													document.getElementById("billardStartMessage").innerHTML = message;
+													document.getElementById("billardAddtimeMessage").innerHTML = "";
+													localStorage.localbillardResetMessage = 0;
+													document.getElementById("billardResetMessage").innerHTML = "";
+											}
+
+
+										}
+
+
+										function resetbillard() {
+													localStorage.localxbillard = 0;
+													localStorage.localbillardAddedtime = "";
+													localStorage.localbillardStartMessage = "";
+													localStorage.localbillardEndMessage = "";
+													localStorage.localbillardResetMessage = 1;
+													clearInterval(billardinterval);
+													clockstartbillard(0);
+													location.reload();
+										}
 
 									var billardinterval = window.setInterval(savebillardinterval, 3000);
 									function savebillardinterval() {
+
 										localStorage.localxbillard = savedtimebillard;
 									}
+
 			</script>
 	</body>
 </html>
