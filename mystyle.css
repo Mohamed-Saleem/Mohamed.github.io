@@ -73,9 +73,10 @@ p {
 
 
 .psone-clock {
+
   width: 90%;
   display: block;
-  margin:20px 0px 20px 36px;
+  margin:20px 0px 20px 100px;
 }
 
 
@@ -101,7 +102,7 @@ p {
 .pstwo-clock {
   width: 90%;
   display: block;
-  margin:20px 0px 20px 36px;
+  margin:20px 0px 20px 100px;
 }
 
 /**End PS two container style**/
@@ -127,7 +128,7 @@ p {
 .psthree-clock {
   width: 90%;
   display: block;
-  margin:20px 0px 20px 36px;
+  margin:20px 0px 20px 100px;
 }
 
 /**End PS three container style**/
@@ -153,7 +154,7 @@ p {
 .psfour-clock {
   width: 90%;
   display: block;
-  margin:20px 0px 20px 36px;
+  margin:20px 0px 20px 100px;
 }
 
 /**End PS four container style**/
@@ -179,7 +180,7 @@ p {
 .billard-clock {
   width: 90%;
   display: block;
-  margin:20px 0px 20px 36px;
+  margin:20px 0px 20px 100px;
 }
 
 /**End Billard one container style**/
